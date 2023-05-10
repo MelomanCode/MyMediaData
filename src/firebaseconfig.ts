@@ -1,4 +1,4 @@
-export const firebaseconfig = {
+export const firebaseconfig: { [key: string]: string } = {
   apiKey: 'AIzaSyCsBk53_rbDRcvw8ILrBH9PGEu0g5fSq7Q',
   authDomain: 'mymediadata-11a08.firebaseapp.com',
   projectId: 'mymediadata-11a08',
