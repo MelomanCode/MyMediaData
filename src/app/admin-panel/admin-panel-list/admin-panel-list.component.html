@@ -10,7 +10,6 @@
         *ngFor="let tabName of tabNamesList"
         [ngClass]="{ active: tab === tabName }"
         class="btn btn-outline-dark without-hover"
-        style="font-size: 20px"
         type="button"
       >
         {{ tabName | titlecase }}
@@ -18,7 +17,7 @@
     </div>
     <button
       (click)="add()"
-      class="btn btn-info"
+      class="btn btn-outline-dark"
       type="button"
     >
       Add New
@@ -31,7 +30,14 @@
     <thead>
       <tr>
         <th scope="col">Image</th>
-        <th scope="col">Name</th>
+        <th
+          scope="col"
+          style="width: 400px"
+        >
+          Name
+        </th>
+        <th scope="col">Description</th>
+        <th scope="col" style="width: 100px">My Top Rating</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -47,18 +53,27 @@
             class="preview"
           />
         </th>
-        <td class="align-middle">{{ entity.name }}</td>
         <td class="align-middle">
+          <b>{{ entity.name }}</b>
+        </td>
+        <td class="align-middle">{{ entity.history }}</td>
+        <td class="align-middle" style="font-size: 24px">
+          <b>{{ entity.myTop }}</b>
+        </td>
+        <td
+          class="align-middle"
+          style="width: 100px"
+        >
           <button
             (click)="edit(entity)"
-            class="btn btn-success"
+            class="btn btn-sm btn-success"
             type="button"
           >
             <i class="fa fa-edit"></i>
           </button>
           <button
             (click)="delete()"
-            class="btn btn-danger"
+            class="btn btn-sm btn-danger"
             style="margin-left: 10px"
             type="button"
           >

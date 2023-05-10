@@ -13,12 +13,11 @@
 }
 
 .without-hover:hover {
-  background-color: #e7e7e7;
-  color: black;
+  background-color: #595959;
 }
 
 .table td,
 th {
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
 }
