@@ -1,0 +1,86 @@
+<form [formGroup]="formGroup">
+  <ng-container *ngIf="getIsAccessControl('name')">
+    <div class="mb-3">
+      <label class="form-label" for="name">Name </label>
+      <input
+        class="form-control"
+        formControlName="name"
+        id="name"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('imageLink')">
+    <div class="mb-3">
+      <label class="form-label" for="imageLink">Image Link</label>
+      <input
+        class="form-control"
+        formControlName="imageLink"
+        id="imageLink"
+        type="url"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('myTop')">
+    <div class="mb-3">
+      <label class="form-label" for="myTop">My Top Rating</label>
+      <input
+        class="form-control"
+        formControlName="myTop"
+        id="myTop"
+        max="10"
+        min="0"
+        type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('comments')">
+    <div class="mb-3">
+      <label class="form-label" for="comments">My Comments</label>
+      <input
+        class="form-control"
+        formControlName="comments"
+        id="comments"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('link')">
+    <div class="mb-3">
+      <label class="form-label" for="link">Link To Content</label>
+      <input
+        class="form-control"
+        formControlName="link"
+        id="link"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('filmGenre')">
+    <div class="mb-3">
+      <label class="form-label" for="filmGenre">Film Genre</label>
+      <input
+        class="form-control"
+        formControlName="filmGenre"
+        id="filmGenre"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <!--  <ng-container *ngIf="getIsAccessControl('')"></ng-container>-->
+
+  <button
+    (click)="submitData()"
+    [disabled]="formGroup.invalid"
+    class="btn btn-primary"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
