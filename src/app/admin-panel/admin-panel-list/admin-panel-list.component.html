@@ -1,6 +1,10 @@
 <div class="main">
   <div class="admin-tabs">
-    <div aria-label="Tabs" class="btn-group" role="group">
+    <div
+      aria-label="Tabs"
+      class="btn-group"
+      role="group"
+    >
       <button
         (click)="changeTab(tabName)"
         *ngFor="let tabName of tabNamesList"
@@ -12,7 +16,13 @@
         {{ tabName | titlecase }}
       </button>
     </div>
-    <button (click)="add()" class="btn btn-info" type="button">Add New</button>
+    <button
+      (click)="add()"
+      class="btn btn-info"
+      type="button"
+    >
+      Add New
+    </button>
   </div>
 </div>
 
@@ -27,7 +37,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let entity of showArray">
-        <th style="width: 140px" class="align-middle">
+        <th
+          style="width: 140px"
+          class="align-middle"
+        >
           <img
             [alt]="entity.imageLink"
             [src]="entity.imageLink"
@@ -36,7 +49,11 @@
         </th>
         <td class="align-middle">{{ entity.name }}</td>
         <td class="align-middle">
-          <button (click)="edit(entity)" class="btn btn-success" type="button">
+          <button
+            (click)="edit(entity)"
+            class="btn btn-success"
+            type="button"
+          >
             <i class="fa fa-edit"></i>
           </button>
           <button
@@ -54,7 +71,10 @@
 </div>
 
 <!--<button class="btn btn-outline-primary mb-2 me-2" (click)="openXl(content)">Extra large modal</button>-->
-<ng-template #content let-modal>
+<ng-template
+  #content
+  let-modal
+>
   <div class="modal-header">
     <h4 class="modal-title">Modal title</h4>
     <button
@@ -65,11 +85,11 @@
     ></button>
   </div>
   <div class="modal-body">
-    <admin-panel-editor
+    <app-admin-panel-editor
       [type]="tab"
       [editableEntity]="editableEntity"
       (changeData)="updateData($event)"
-    ></admin-panel-editor>
+    ></app-admin-panel-editor>
   </div>
   <div class="modal-footer">
     <button

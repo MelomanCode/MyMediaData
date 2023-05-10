@@ -15,7 +15,7 @@ import {
 import { EntityTypes } from '../../interfaces/constants';
 
 @Component({
-  selector: 'admin-panel-editor',
+  selector: 'app-admin-panel-editor',
   templateUrl: './admin-panel-editor.component.html',
   styleUrls: ['./admin-panel-editor.component.css'],
 })

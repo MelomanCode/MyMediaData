@@ -14,7 +14,7 @@ import {
 } from '../../interfaces/my-media-data.interfaces';
 
 @Component({
-  selector: 'admin-panel-list',
+  selector: 'app-admin-panel-list',
   templateUrl: './admin-panel-list.component.html',
   styleUrls: ['./admin-panel-list.component.css'],
 })
