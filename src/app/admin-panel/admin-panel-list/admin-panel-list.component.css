@@ -13,7 +13,7 @@
 }
 
 .without-hover:hover {
-  background-color: #595959;
+  color: #d00b0b;
 }
 
 .table td,
