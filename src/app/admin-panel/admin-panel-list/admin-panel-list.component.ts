@@ -7,8 +7,10 @@ import {
   TAB_NAMES_LIST,
 } from '../../interfaces/constants';
 import {
+  Entity,
   IAnime,
   IAudiobook,
+  IEntity,
   IFilm,
   IManga,
   ISeries,
@@ -21,7 +23,6 @@ import {
 })
 export class AdminPanelListComponent implements OnInit {
   @ViewChild('content') content: any;
-  @ViewChild('closeModal') closeModal: any;
 
   public tabNamesList = TAB_NAMES_LIST;
   tab: EntityTypes = 'films';
@@ -30,9 +31,9 @@ export class AdminPanelListComponent implements OnInit {
   animeArray: IAnime[] = [];
   mangaArray: IManga[] = [];
   audiobookArray: IAudiobook[] = [];
-  showArray: any[] = [];
+  showArray: IEntity[] = [];
 
-  editableEntity: any = null;
+  editableEntity: Entity = new Entity();
 
   constructor(private modalService: NgbModal) {}
 
@@ -45,21 +46,20 @@ export class AdminPanelListComponent implements OnInit {
       this.filmArray.push(tmp);
       this.seriesArray.push(tmp1);
     }
-    this.showArray = this.filmArray;
-    console.log(this.showArray);
+    this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
   }
 
   add() {
-    this.editableEntity = null;
+    this.editableEntity = new Entity();
     this.openXl();
   }
 
-  edit(entity: any) {
+  edit(entity: IEntity) {
     this.editableEntity = entity;
     this.openXl();
   }
 
-  delete(entity: any) {
+  delete(entity: IEntity) {
     this.showArray = this.showArray.filter((el) => el.id !== entity.id);
     switch (this.tab) {
       case 'films':
@@ -92,28 +92,32 @@ export class AdminPanelListComponent implements OnInit {
     this.tab = tab;
     switch (this.tab) {
       case 'films':
-        this.showArray = this.filmArray;
+        this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
         break;
 
       case 'series':
-        this.showArray = this.seriesArray;
+        this.showArray = this.seriesArray.map(
+          (el) => new Entity(el as IEntity)
+        );
         break;
 
       case 'anime':
-        this.showArray = this.animeArray;
+        this.showArray = this.animeArray.map((el) => new Entity(el as IEntity));
         break;
 
       case 'manga':
-        this.showArray = this.mangaArray;
+        this.showArray = this.mangaArray.map((el) => new Entity(el as IEntity));
         break;
 
       case 'audiobooks':
-        this.showArray = this.audiobookArray;
+        this.showArray = this.audiobookArray.map(
+          (el) => new Entity(el as IEntity)
+        );
         break;
     }
   }
 
-  public updateData(data: any): void {
+  public updateData(data: IEntity): void {
     if (this.editableEntity) {
       const index = this.showArray.findIndex((el) => el.id === data.id);
       if (index !== -1) {

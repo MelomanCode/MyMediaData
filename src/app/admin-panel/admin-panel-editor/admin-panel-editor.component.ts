@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { EntityTypes } from '../../interfaces/constants';
+import { Entity, IEntity } from '../../interfaces/my-media-data.interfaces';
 
 @Component({
   selector: 'app-admin-panel-editor',
@@ -14,9 +15,9 @@ import { EntityTypes } from '../../interfaces/constants';
 })
 export class AdminPanelEditorComponent implements OnInit {
   @Input() type: EntityTypes = 'films';
-  @Input() editableEntity: any = null;
+  @Input() editableEntity: IEntity = new Entity();
 
-  @Output() changeData: EventEmitter<any> = new EventEmitter<any>();
+  @Output() changeData: EventEmitter<IEntity> = new EventEmitter<IEntity>();
   public formGroup: FormGroup;
 
   constructor(private fb: FormBuilder) {
