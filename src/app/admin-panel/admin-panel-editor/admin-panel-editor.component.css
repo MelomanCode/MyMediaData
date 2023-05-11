@@ -1,0 +1,12 @@
+.flex-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.image-link {
+  width: 890px;
+}
+
+.preview {
+  width: 200px;
+}

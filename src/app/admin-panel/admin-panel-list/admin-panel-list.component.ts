@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
+  archive81,
   EntityTypes,
   interstellar,
   TAB_NAMES_LIST,
@@ -32,36 +33,18 @@ export class AdminPanelListComponent implements OnInit {
   showArray: any[] = [];
 
   editableEntity: any = null;
-  objFilm: IFilm = {
-    id: '',
-    name: '',
-    filmGenre: '',
-    IMDb: 0,
-    myTop: 0,
-    imageLink: '',
-    comments: '',
-    link: '',
-  };
 
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    const tmp = Object.assign({}, interstellar);
-    tmp.id = '1';
-    this.filmArray.push(tmp);
-
-    const tmp2 = Object.assign({}, interstellar);
-    tmp2.id = '2';
-    this.filmArray.push(tmp2);
-
-    const tmp3 = Object.assign({}, interstellar);
-    tmp3.id = '3';
-    this.filmArray.push(tmp3);
-
-    const tmp4 = Object.assign({}, interstellar);
-    tmp4.id = '4';
-    this.filmArray.push(tmp4);
-
+    for (let i = 0; i < 5; i++) {
+      const tmp = Object.assign({}, interstellar);
+      const tmp1: ISeries = Object.assign({}, archive81);
+      tmp.id = i.toString();
+      tmp1.id = i.toString();
+      this.filmArray.push(tmp);
+      this.seriesArray.push(tmp1);
+    }
     this.showArray = this.filmArray;
     console.log(this.showArray);
   }
@@ -76,7 +59,30 @@ export class AdminPanelListComponent implements OnInit {
     this.openXl();
   }
 
-  delete() {}
+  delete(entity: any) {
+    this.showArray = this.showArray.filter((el) => el.id !== entity.id);
+    switch (this.tab) {
+      case 'films':
+        this.filmArray = this.showArray;
+        break;
+
+      case 'series':
+        this.seriesArray = this.showArray;
+        break;
+
+      case 'anime':
+        this.animeArray = this.showArray;
+        break;
+
+      case 'manga':
+        this.mangaArray = this.showArray;
+        break;
+
+      case 'audiobooks':
+        this.audiobookArray = this.showArray;
+        break;
+    }
+  }
 
   openXl() {
     this.modalService.open(this.content, { size: 'xl' });
@@ -108,19 +114,15 @@ export class AdminPanelListComponent implements OnInit {
   }
 
   public updateData(data: any): void {
-    if (this.tab === 'films') {
-      const film = data as IFilm;
-      if (this.editableEntity) {
-        const index = this.filmArray.findIndex((el) => el.id === data.id);
-        if (index !== -1) {
-          this.filmArray[index] = data;
-        }
-      } else {
-        this.filmArray.push(data);
+    if (this.editableEntity) {
+      const index = this.showArray.findIndex((el) => el.id === data.id);
+      if (index !== -1) {
+        this.showArray[index] = data;
       }
-
-      console.log(film);
+    } else {
+      this.showArray.push(data);
     }
+
     this.modalService.dismissAll();
   }
 }

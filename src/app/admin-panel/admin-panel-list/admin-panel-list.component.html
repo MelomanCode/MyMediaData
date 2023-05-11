@@ -56,7 +56,7 @@
         <td class="align-middle" style="font-size: 18px">
           <b>{{ entity.name }}</b>
         </td>
-        <td class="align-middle">{{ entity.history }}</td>
+        <td class="align-middle">{{ entity.description }}</td>
         <td class="align-middle" style="font-size: 18px">
           <b>{{ entity.myTop }}</b>
         </td>
@@ -72,7 +72,7 @@
             <i class="fa fa-edit"></i>
           </button>
           <button
-            (click)="delete()"
+            (click)="delete(entity)"
             class="btn btn-sm btn-danger"
             style="margin-left: 10px"
             type="button"
@@ -85,7 +85,6 @@
   </table>
 </div>
 
-<!--<button class="btn btn-outline-primary mb-2 me-2" (click)="openXl(content)">Extra large modal</button>-->
 <ng-template
   #content
   let-modal

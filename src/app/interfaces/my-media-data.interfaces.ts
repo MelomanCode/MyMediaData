@@ -6,7 +6,7 @@ export interface IHeroProf {
   history: string;
   worldRank: number;
   imageLink: string;
-  comments?: string;
+  comments: string;
 }
 
 export interface IEntityBase {
@@ -16,11 +16,12 @@ export interface IEntityBase {
   imageLink: string;
   comments: string;
   link: string;
+  description: string;
 }
 
 export interface ISeries extends IEntityBase {
   seasons: number;
-  episodesInSeason: number | string;
+  episodesInSeason: number;
   IMDb: number;
 }
 

@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -34,6 +27,7 @@ export class AdminPanelEditorComponent implements OnInit {
       imageLink: [''],
       comments: [''],
       link: [''],
+      description: [''],
     });
   }
 
@@ -43,8 +37,47 @@ export class AdminPanelEditorComponent implements OnInit {
         'filmGenre',
         new FormControl('', Validators.required)
       );
+      this.formGroup.addControl(
+        'IMDb',
+        new FormControl(0, [Validators.min(0), Validators.max(10)])
+      );
+    } else if (this.type === 'series') {
+      this.formGroup.addControl(
+        'seasons',
+        new FormControl(0, Validators.required)
+      );
+
+      this.formGroup.addControl(
+        'episodesInSeason',
+        new FormControl(0, Validators.required)
+      );
+
+      this.formGroup.addControl(
+        'IMDb',
+        new FormControl(0, [Validators.min(0), Validators.max(10)])
+      );
+      // this.formGroup.removeControl('comments');
+    } else if (this.type === 'anime') {
+      this.formGroup.addControl(
+        'seasons',
+        new FormControl(0, Validators.required)
+      );
+
+      this.formGroup.addControl(
+        'episodesInSeason',
+        new FormControl(0, Validators.required)
+      );
+
+      this.formGroup.addControl('category', new FormControl(''));
     } else if (this.type === 'manga') {
-      this.formGroup.removeControl('comments');
+      this.formGroup.addControl('chapters', new FormControl(0));
+      this.formGroup.addControl(
+        'remangaGrade',
+        new FormControl(0, [Validators.min(0), Validators.max(10)])
+      );
+    } else if (this.type === 'audiobooks') {
+      this.formGroup.addControl('books', new FormControl(0));
+      this.formGroup.addControl('chapters', new FormControl(0));
     }
 
     if (this.editableEntity) {

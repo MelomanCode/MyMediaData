@@ -16,18 +16,27 @@
   </ng-container>
 
   <ng-container *ngIf="getIsAccessControl('imageLink')">
-    <div class="mb-3">
-      <label
-        class="form-label"
-        for="imageLink"
+    <div class="mb-3 flex-control">
+      <div class="image-link">
+        <label
+          class="form-label"
+          for="imageLink"
         >Image Link</label
-      >
+        >
       <input
         class="form-control"
         formControlName="imageLink"
         id="imageLink"
         type="url"
       />
+      </div>
+      <div class="preview">
+      <img
+        [alt]="formGroup.get('imageLink')?.value"
+        [src]="formGroup.get('imageLink')?.value"
+        class="preview"
+      />
+      </div>
     </div>
   </ng-container>
 
@@ -97,7 +106,137 @@
     </div>
   </ng-container>
 
-  <!--  <ng-container *ngIf="getIsAccessControl('')"></ng-container>-->
+  <ng-container *ngIf="getIsAccessControl('description')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="description"
+      >Description</label
+      >
+      <textarea
+        class="form-control"
+        formControlName="description"
+        id="description"
+        type="text"
+      ></textarea>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('IMDb')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="IMDb"
+      >IMDb</label
+      >
+      <input
+        class="form-control"
+        formControlName="IMDb"
+        id="IMDb"
+        max="10"
+        min="0"
+        type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('seasons')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="seasons"
+      >Seasons</label
+      >
+      <input
+        class="form-control"
+        formControlName="seasons"
+        id="seasons"
+        type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('episodesInSeason')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="episodesInSeason"
+      >Episodes (Season / All)</label
+      >
+      <input
+        class="form-control"
+        formControlName="episodesInSeason"
+        id="episodesInSeason"
+        type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('category')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="category"
+      >Category Anime</label
+      >
+      <input
+        class="form-control"
+        formControlName="category"
+        id="category"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('chapters')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="chapters"
+      >Chapters</label
+      >
+      <input
+        class="form-control"
+        formControlName="chapters"
+        id="chapters"
+        type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('remangaGrade')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="remangaGrade"
+      >Remanga Grade</label
+      >
+      <input
+        class="form-control"
+        formControlName="remangaGrade"
+        id="remangaGrade"
+        max="10"
+        min="0"
+        type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('books')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="books"
+      >Books</label
+      >
+      <input
+        class="form-control"
+        formControlName="books"
+        id="books"
+        type="number"
+      />
+    </div>
+  </ng-container>
 
   <button
     (click)="submitData()"

@@ -1,10 +1,4 @@
-import {
-  IAnime,
-  IAudiobook,
-  IFilm,
-  IManga,
-  ISeries,
-} from './my-media-data.interfaces';
+import { IFilm, ISeries } from './my-media-data.interfaces';
 
 export type EntityTypes = 'series' | 'films' | 'anime' | 'manga' | 'audiobooks';
 
@@ -26,6 +20,7 @@ export const interstellar: IFilm = {
   filmGenre: 'Fantasy',
   link: 'https://rezka.ag/films/fiction/2259-interstellar-2014.html',
   comments: '',
+  description: '',
 };
 
 // export const AliceInBorderland: ISeries = {
@@ -47,14 +42,18 @@ export const interstellar: IFilm = {
 //   link: 'https://rezka.ag/series/fantasy/16255-van-helsing-2016.html#t:111-s:5-e:1'
 // }
 //
-// export const Archive81: ISeries = {
-//   name: 'Архив 81',
-//   seasons: 1,
-//   episodesInSeason: 8,
-//   IMDb:  7.3,
-//   myTop: 9.6,
-//   imageLink: 'https://upload.wikimedia.org/wikipedia/ru/9/9d/Archive_81.jpg'
-// }
+export const archive81: ISeries = {
+  id: '',
+  name: 'Архив 81',
+  seasons: 1,
+  episodesInSeason: 8,
+  IMDb: 7.3,
+  myTop: 9.6,
+  imageLink: 'https://upload.wikimedia.org/wikipedia/ru/9/9d/Archive_81.jpg',
+  description: '',
+  link: '',
+  comments: '',
+};
 //
 // export const AvatarOfKing: ISeries = {
 //   name: 'Аварар короля',
