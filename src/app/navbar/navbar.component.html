@@ -1,0 +1,41 @@
+<div class="sticky-wrap">
+  <div class="items-space">
+    <img
+      (click)="changeTab('home')"
+      alt="image"
+      class="nav-logo"
+      src="https://img1.mnogo-futbolochek.ru/images/0/2/2900/2900721/previews/people_2_sign_front_white_700.jpg"
+    />
+    <a
+      class="custom-link"
+      (click)="changeTab(tabName)"
+      *ngFor="let tabName of tabNamesList"
+    >
+      {{ tabName | titlecase }}
+    </a>
+  </div>
+  <div class="nav-search">
+    <form
+      action="/search/"
+      class="form-search"
+      target="_blank"
+    >
+      <input
+        name="searchid"
+        type="hidden"
+        value="2266622"
+      />
+      <input
+        name="text"
+        placeholder="Search"
+        required
+        type="search"
+      />
+      <input
+        alt="#"
+        src="https://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/Hu2poBOPx3g/s1600/search.png"
+        type="image"
+      />
+    </form>
+  </div>
+</div>

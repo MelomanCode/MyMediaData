@@ -1,8 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-  </head>
-  <body></body>
-</html>
+<app-navbar-component
+  (changeTabEmit)="changeTab($event)"
+></app-navbar-component>
+
+<div
+  class="table"
+  *ngIf="tab !== 'home'"
+>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th
+          scope="col"
+          style="width: 400px"
+        >
+          Name
+        </th>
+        <th scope="col">Description</th>
+        <th
+          scope="col"
+          style="width: 200px"
+        >
+          My Top Rating
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entity of showArray">
+        <th
+          style="width: 140px"
+          class="align-middle"
+        >
+          <img
+            [alt]="entity.imageLink"
+            [src]="entity.imageLink"
+            class="preview"
+          />
+        </th>
+        <td
+          class="align-middle"
+          style="font-size: 18px"
+        >
+          <b
+            class="aboutTab"
+            (click)="about(entity)"
+            >{{ entity.name }}</b
+          >
+        </td>
+        <td class="align-middle">{{ truncateString(entity.description) }}</td>
+        <td
+          class="align-middle"
+          style="font-size: 18px"
+        >
+          <b>{{ entity.myTop }}</b>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template
+  #content
+  let-modal
+>
+  <div class="modal-header">
+    <h4 class="modal-title">Полное описание</h4>
+    <button
+      (click)="modal.dismiss('Cross click')"
+      aria-label="Close"
+      class="btn-close"
+      type="button"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-description-file
+      [editableEntity]="editableEntity"
+      [type]="tab"
+    >
+    </app-description-file>
+  </div>
+  <div class="modal-body"></div>
+
+</ng-template>

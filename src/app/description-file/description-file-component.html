@@ -1,0 +1,35 @@
+<div class="main-content">
+  <div style="width: 30%">
+    <img
+      [alt]="editableEntity.imageLink"
+      [src]="editableEntity.imageLink"
+      class="preview"
+    />
+  </div>
+
+  <div
+    class="flex-content"
+    style="width: 70%"
+  >
+    <h3 class="">{{editableEntity.name}}</h3>
+    <div class="description-flex">
+      <p *ngIf="type === 'films'"><b>Жанр: </b>{{editableEntity.filmGenre}}</p>
+      <p *ngIf="type === 'manga'"><b>Кол-во глав: </b>{{editableEntity.chapters}}</p>
+      <p *ngIf="type === 'audiobooks'"><b>Кол-во глав: </b>{{editableEntity.chapters}}</p>
+      <p *ngIf="type === 'anime'"><b>Категория аниме: </b>{{editableEntity.category}}</p>
+      <p *ngIf="type === 'audiobooks'"><b>Кол-во книг: </b>{{editableEntity.books}}</p>
+      <p *ngIf="type === 'series'"><b>Кол-во сезонов: </b>{{editableEntity.seasons}}</p>
+      <p *ngIf="type === 'anime'"><b>Кол-во сезонов: </b>{{editableEntity.seasons}}</p>
+      <p *ngIf="type === 'series'"><b>Кол-во эпизодов (в сезоне/ всего): </b>{{editableEntity.episodesInSeason}}</p>
+      <p *ngIf="type === 'anime'"><b>Кол-во эпизодов (в сезоне/ всего): </b>{{editableEntity.episodesInSeason}}</p>
+      <p *ngIf="type === 'films'"><b>Рейтинг на IMDb: </b>{{editableEntity.IMDb}}</p>
+      <p *ngIf="type === 'series'"><b>Рейтинг на IMDb: </b>{{editableEntity.IMDb}}</p>
+      <p *ngIf="type === 'manga'"><b>Рейтинг на Remanga: </b>{{editableEntity.remangaGrade}}</p>
+      <p><b>Описание: </b>{{editableEntity.description}}</p>
+      <p><b>Мой комментарий: </b>{{editableEntity.comments}}</p>
+      <p><b>Моя оценка: </b>{{editableEntity.myTop}}</p>
+      <a><b>Ссылка на контент: </b>{{editableEntity.link}}</a>
+    </div>
+  </div>
+</div>
+

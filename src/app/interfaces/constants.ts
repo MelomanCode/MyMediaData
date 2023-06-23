@@ -1,6 +1,12 @@
-import { IFilm, ISeries } from './my-media-data.interfaces';
+import { IFilm } from './my-media-data.interfaces';
 
-export type EntityTypes = 'series' | 'films' | 'anime' | 'manga' | 'audiobooks';
+export type EntityTypes =
+  | 'series'
+  | 'films'
+  | 'anime'
+  | 'manga'
+  | 'audiobooks'
+  | 'home';
 
 export const TAB_NAMES_LIST: EntityTypes[] = [
   'films',
@@ -42,18 +48,18 @@ export const interstellar: IFilm = {
 //   link: 'https://rezka.ag/series/fantasy/16255-van-helsing-2016.html#t:111-s:5-e:1'
 // }
 //
-export const archive81: ISeries = {
-  id: '',
-  name: 'Архив 81',
-  seasons: 1,
-  episodesInSeason: 8,
-  IMDb: 7.3,
-  myTop: 9.6,
-  imageLink: 'https://upload.wikimedia.org/wikipedia/ru/9/9d/Archive_81.jpg',
-  description: '',
-  link: '',
-  comments: '',
-};
+// export const archive81: ISeries = {
+//   id: '',
+//   name: 'Архив 81',
+//   seasons: 1,
+//   episodesInSeason: 8,
+//   IMDb: 7.3,
+//   myTop: 9.6,
+//   imageLink: 'https://upload.wikimedia.org/wikipedia/ru/9/9d/Archive_81.jpg',
+//   description: '',
+//   link: '',
+//   comments: '',
+// };
 //
 // export const AvatarOfKing: ISeries = {
 //   name: 'Аварар короля',

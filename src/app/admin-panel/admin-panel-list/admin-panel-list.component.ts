@@ -1,11 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  archive81,
-  EntityTypes,
-  interstellar,
-  TAB_NAMES_LIST,
-} from '../../interfaces/constants';
+import { EntityTypes, TAB_NAMES_LIST } from '../../interfaces/constants';
 import {
   Entity,
   IAnime,
@@ -15,6 +10,11 @@ import {
   IManga,
   ISeries,
 } from '../../interfaces/my-media-data.interfaces';
+import { FilmsService } from '../../services/films.service';
+import { SeriesService } from '../../services/series.service';
+import { AnimeService } from '../../services/anime.service';
+import { AudiobooksService } from '../../services/audiobooks.service';
+import { MangaService } from '../../services/manga.service';
 
 @Component({
   selector: 'app-admin-panel-list',
@@ -35,18 +35,41 @@ export class AdminPanelListComponent implements OnInit {
 
   editableEntity: Entity = new Entity();
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private filmsService: FilmsService,
+    private seriesService: SeriesService,
+    private animeService: AnimeService,
+    private mangaService: MangaService,
+    private audiobooksService: AudiobooksService
+  ) {}
 
   ngOnInit(): void {
-    for (let i = 0; i < 5; i++) {
-      const tmp = Object.assign({}, interstellar);
-      const tmp1: ISeries = Object.assign({}, archive81);
-      tmp.id = i.toString();
-      tmp1.id = i.toString();
-      this.filmArray.push(tmp);
-      this.seriesArray.push(tmp1);
-    }
-    this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
+    const promise1 = this.filmsService.getValues().then((filmsList) => {
+      this.filmArray = Array.from(filmsList);
+    });
+
+    const promise2 = this.seriesService.getValues().then((seriesList) => {
+      this.seriesArray = Array.from(seriesList);
+    });
+
+    const promise3 = this.animeService.getValues().then((animeList) => {
+      this.animeArray = Array.from(animeList);
+    });
+
+    const promise4 = this.mangaService.getValues().then((mangaList) => {
+      this.mangaArray = Array.from(mangaList);
+    });
+
+    const promise5 = this.audiobooksService
+      .getValues()
+      .then((audiobooksList) => {
+        this.audiobookArray = Array.from(audiobooksList);
+      });
+
+    Promise.all([promise1, promise2, promise3, promise4, promise5]).then(() => {
+      this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
+    });
   }
 
   add() {
@@ -63,23 +86,33 @@ export class AdminPanelListComponent implements OnInit {
     this.showArray = this.showArray.filter((el) => el.id !== entity.id);
     switch (this.tab) {
       case 'films':
-        this.filmArray = this.showArray;
+        this.filmsService.deleteValue(entity).then(() => {
+          this.filmArray = this.showArray;
+        });
         break;
 
       case 'series':
-        this.seriesArray = this.showArray;
+        this.seriesService.deleteValue(entity).then(() => {
+          this.seriesArray = this.showArray;
+        });
         break;
 
       case 'anime':
-        this.animeArray = this.showArray;
+        this.animeService.deleteValue(entity).then(() => {
+          this.animeArray = this.showArray;
+        });
         break;
 
       case 'manga':
-        this.mangaArray = this.showArray;
+        this.mangaService.deleteValue(entity).then(() => {
+          this.mangaArray = this.showArray;
+        });
         break;
 
       case 'audiobooks':
-        this.audiobookArray = this.showArray;
+        this.audiobooksService.deleteValue(entity).then(() => {
+          this.audiobookArray = this.showArray;
+        });
         break;
     }
   }
@@ -118,15 +151,93 @@ export class AdminPanelListComponent implements OnInit {
   }
 
   public updateData(data: IEntity): void {
-    if (this.editableEntity) {
+    if (this.editableEntity.id !== '') {
       const index = this.showArray.findIndex((el) => el.id === data.id);
       if (index !== -1) {
-        this.showArray[index] = data;
+        switch (this.tab) {
+          case 'films':
+            this.filmsService.updateValue(data).then();
+            this.filmArray.push(data);
+            this.filmArray[index] = data;
+            this.showArray[index] = data;
+            break;
+
+          case 'series':
+            this.seriesService.updateValue(data).then();
+            this.seriesArray.push(data);
+            this.seriesArray[index] = data;
+            this.showArray[index] = data;
+            break;
+
+          case 'anime':
+            this.animeService.updateValue(data).then();
+            this.animeArray.push(data);
+            this.animeArray[index] = data;
+            this.showArray[index] = data;
+            break;
+
+          case 'manga':
+            this.mangaService.updateValue(data).then();
+            this.mangaArray.push(data);
+            this.mangaArray[index] = data;
+            this.showArray[index] = data;
+            break;
+
+          case 'audiobooks':
+            this.audiobooksService.updateValue(data).then();
+            this.audiobookArray.push(data);
+            this.audiobookArray[index] = data;
+            this.showArray[index] = data;
+            break;
+        }
       }
     } else {
-      this.showArray.push(data);
-    }
+      switch (this.tab) {
+        case 'films':
+          this.filmsService.createValue(data).then((newFilmId) => {
+            data.id = newFilmId;
+            this.filmArray.push(data);
+            this.showArray.push(data);
+          });
+          break;
 
+        case 'series':
+          this.seriesService.createValue(data).then((newSeriesId) => {
+            data.id = newSeriesId;
+            this.seriesArray.push(data);
+            this.showArray.push(data);
+          });
+          break;
+
+        case 'anime':
+          this.animeService.createValue(data).then((newAnimeId) => {
+            data.id = newAnimeId;
+            this.animeArray.push(data);
+            this.showArray.push(data);
+          });
+          break;
+
+        case 'manga':
+          this.mangaService.createValue(data).then((newMangaId) => {
+            data.id = newMangaId;
+            this.mangaArray.push(data);
+            this.showArray.push(data);
+          });
+          break;
+
+        case 'audiobooks':
+          this.audiobooksService.createValue(data).then((newAudiobookId) => {
+            data.id = newAudiobookId;
+            this.audiobookArray.push(data);
+            this.showArray.push(data);
+          });
+          break;
+      }
+    }
     this.modalService.dismissAll();
+  }
+
+  truncateString(originalString: string): string {
+    return originalString.slice(0, 120) + '...';
   }
 }

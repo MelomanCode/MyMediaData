@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
+import { FilmsService } from './services/films.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,7 @@ import { ApiService } from './services/api.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: FilmsService) {}
 
-  ngOnInit() {
-    this.apiService.getData().then();
-  }
+  ngOnInit() {}
 }

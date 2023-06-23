@@ -1,0 +1,18 @@
+.aboutTab {
+  cursor: pointer;
+}
+
+.preview {
+  width: 80px;
+}
+
+.without-hover:hover {
+  color: #d00b0b;
+}
+
+.table td,
+th {
+  text-align: center;
+  font-size: 16px;
+}
+
