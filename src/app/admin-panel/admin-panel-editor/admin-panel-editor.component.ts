@@ -29,6 +29,8 @@ export class AdminPanelEditorComponent implements OnInit {
       comments: [''],
       link: [''],
       description: [''],
+      release: [''],
+      views: [''],
     });
   }
 
@@ -45,12 +47,12 @@ export class AdminPanelEditorComponent implements OnInit {
     } else if (this.type === 'series') {
       this.formGroup.addControl(
         'seasons',
-        new FormControl(0, Validators.required)
+        new FormControl('', Validators.required)
       );
 
       this.formGroup.addControl(
         'episodesInSeason',
-        new FormControl(0, Validators.required)
+        new FormControl('', Validators.required)
       );
 
       this.formGroup.addControl(
@@ -61,17 +63,18 @@ export class AdminPanelEditorComponent implements OnInit {
     } else if (this.type === 'anime') {
       this.formGroup.addControl(
         'seasons',
-        new FormControl(0, Validators.required)
+        new FormControl('', Validators.required)
       );
 
       this.formGroup.addControl(
         'episodesInSeason',
-        new FormControl(0, Validators.required)
+        new FormControl('', Validators.required)
       );
 
       this.formGroup.addControl('category', new FormControl(''));
     } else if (this.type === 'manga') {
       this.formGroup.addControl('chapters', new FormControl(0));
+      this.formGroup.addControl('state', new FormControl(''));
       this.formGroup.addControl(
         'remangaGrade',
         new FormControl(0, [Validators.min(0), Validators.max(10)])
@@ -79,6 +82,7 @@ export class AdminPanelEditorComponent implements OnInit {
     } else if (this.type === 'audiobooks') {
       this.formGroup.addControl('books', new FormControl(0));
       this.formGroup.addControl('chapters', new FormControl(0));
+      this.formGroup.addControl('state', new FormControl(''));
     }
 
     if (this.editableEntity) {

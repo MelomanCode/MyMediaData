@@ -17,11 +17,13 @@ export interface IEntityBase {
   comments: string;
   link: string;
   description: string;
+  release: string;
+  views: string;
 }
 
 export interface ISeries extends IEntityBase {
-  seasons: number;
-  episodesInSeason: number;
+  seasons: string;
+  episodesInSeason: string;
   IMDb: number;
 }
 
@@ -31,19 +33,21 @@ export interface IFilm extends IEntityBase {
 }
 
 export interface IAnime extends IEntityBase {
-  seasons: number;
-  episodesInSeason: number;
+  seasons: string;
+  episodesInSeason: string;
   category: string;
 }
 
 export interface IManga extends IEntityBase {
   chapters: number;
   remangaGrade: number;
+  state: string;
 }
 
 export interface IAudiobook extends IEntityBase {
   books: number;
   chapters: number;
+  state: string;
 }
 
 export interface IEntity extends IFilm, ISeries, IAnime, IManga, IAudiobook {}
@@ -55,7 +59,7 @@ export class Entity implements IEntity {
   chapters = 0;
   comments = '';
   description = '';
-  episodesInSeason = 0;
+  episodesInSeason = '';
   filmGenre = '';
   id = '';
   imageLink = '';
@@ -63,7 +67,10 @@ export class Entity implements IEntity {
   myTop = 0;
   name = '';
   remangaGrade = 0;
-  seasons = 0;
+  seasons = '';
+  release = '';
+  state = '';
+  views = '';
 
   constructor(params?: IEntity) {
     if (params) {
@@ -82,6 +89,9 @@ export class Entity implements IEntity {
       this.name = params.name;
       this.remangaGrade = params.remangaGrade;
       this.seasons = params.seasons;
+      this.release = params.release;
+      this.state = params.state;
+      this.views = params.views;
     }
   }
 }

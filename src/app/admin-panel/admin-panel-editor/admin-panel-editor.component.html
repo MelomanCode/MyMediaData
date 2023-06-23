@@ -151,7 +151,7 @@
         class="form-control"
         formControlName="seasons"
         id="seasons"
-        type="number"
+        type="text"
       />
     </div>
   </ng-container>
@@ -167,7 +167,7 @@
         class="form-control"
         formControlName="episodesInSeason"
         id="episodesInSeason"
-        type="number"
+        type="text"
       />
     </div>
   </ng-container>
@@ -234,6 +234,54 @@
         formControlName="books"
         id="books"
         type="number"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('release')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="release"
+      >Release</label
+      >
+      <input
+        class="form-control"
+        formControlName="release"
+        id="release"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('state')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="state"
+      >State product</label
+      >
+      <input
+        class="form-control"
+        formControlName="state"
+        id="state"
+        type="text"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getIsAccessControl('views')">
+    <div class="mb-3">
+      <label
+        class="form-label"
+        for="views"
+      >Number of views</label
+      >
+      <input
+        class="form-control"
+        formControlName="views"
+        id="views"
+        type="text"
       />
     </div>
   </ng-container>

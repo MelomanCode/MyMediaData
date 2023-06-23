@@ -1,5 +1,3 @@
-import { IFilm } from './my-media-data.interfaces';
-
 export type EntityTypes =
   | 'series'
   | 'films'
@@ -16,18 +14,18 @@ export const TAB_NAMES_LIST: EntityTypes[] = [
   'audiobooks',
 ];
 
-export const interstellar: IFilm = {
-  id: '',
-  name: 'Интерстеллар',
-  imageLink:
-    'https://upload.wikimedia.org/wikipedia/ru/c/c3/Interstellar_2014.jpg',
-  IMDb: 8.6,
-  myTop: 10,
-  filmGenre: 'Fantasy',
-  link: 'https://rezka.ag/films/fiction/2259-interstellar-2014.html',
-  comments: '',
-  description: '',
-};
+// export const interstellar: IFilm = {
+//   id: '',
+//   name: 'Интерстеллар',
+//   imageLink:
+//     'https://upload.wikimedia.org/wikipedia/ru/c/c3/Interstellar_2014.jpg',
+//   IMDb: 8.6,
+//   myTop: 10,
+//   filmGenre: 'Fantasy',
+//   link: 'https://rezka.ag/films/fiction/2259-interstellar-2014.html',
+//   comments: '',
+//   description: '',
+// };
 
 // export const AliceInBorderland: ISeries = {
 //   name: 'Алиса в пограничье',
