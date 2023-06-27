@@ -21,6 +21,16 @@
             style="width: 400px"
           >
             Name
+            <span (click)="sortTrigger('name')"
+              ><i
+                *ngIf="nameSortTrigger === 'a-z' || nameSortTrigger === 'null'"
+                class="fa fa-caret-down"
+              ></i>
+              <i
+                *ngIf="nameSortTrigger === 'z-a'"
+                class="fa fa-caret-up"
+              ></i>
+            </span>
           </th>
           <th scope="col">Description</th>
           <th
@@ -28,6 +38,14 @@
             style="width: 200px"
           >
             My Top Rating
+            <span (click)="sortTrigger('myTop')"><i
+              *ngIf="myTopSortTrigger === 'a-z' || myTopSortTrigger === 'null'"
+              class="fa fa-caret-down"
+            ></i>
+              <i
+                *ngIf="myTopSortTrigger === 'z-a'"
+                class="fa fa-caret-up"
+              ></i></span>
           </th>
         </tr>
       </thead>

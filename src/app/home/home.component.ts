@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
   editableEntity: Entity = new Entity();
   searchValue = '';
   scrollDirection: 'up' | 'down' = 'up';
+  nameSortTrigger: 'a-z' | 'z-a' | 'null' = 'null';
+  myTopSortTrigger: 'a-z' | 'z-a' | 'null' = 'null';
 
   constructor(
     private modalService: NgbModal,
@@ -108,6 +110,46 @@ export class HomeComponent implements OnInit {
           (el) => new Entity(el as IEntity)
         );
         break;
+    }
+  }
+
+  sort(type: 'a-z' | 'z-a' | 'null', field: 'name' | 'myTop') {
+    if (type === 'null') {
+      return;
+    }
+
+    this.showArray = this.showArray.sort((a, b) => {
+      const nameA = field === 'name' ? a.name.toLowerCase() : a.myTop;
+      const nameB = field === 'name' ? b.name.toLowerCase() : b.myTop;
+
+      if (nameA < nameB) {
+        let tmp;
+        type === 'z-a' ? (tmp = 1) : (tmp = -1);
+        return tmp;
+      }
+      if (nameA > nameB) {
+        let tmp;
+        type === 'a-z' ? (tmp = 1) : (tmp = -1);
+        return tmp;
+      }
+      return 0;
+    });
+  }
+  sortTrigger(field: 'name' | 'myTop') {
+    if (field === 'name') {
+      this.nameSortTrigger === 'a-z'
+        ? this.sort('z-a', field)
+        : this.sort('a-z', field);
+      this.nameSortTrigger === 'a-z'
+        ? (this.nameSortTrigger = 'z-a')
+        : (this.nameSortTrigger = 'a-z');
+    } else {
+      this.myTopSortTrigger === 'a-z'
+        ? this.sort('z-a', field)
+        : this.sort('a-z', field);
+      this.myTopSortTrigger === 'a-z'
+        ? (this.myTopSortTrigger = 'z-a')
+        : (this.myTopSortTrigger = 'a-z');
     }
   }
 

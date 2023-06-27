@@ -74,24 +74,24 @@ export class Entity implements IEntity {
 
   constructor(params?: IEntity) {
     if (params) {
-      this.IMDb = params.IMDb;
-      this.books = params.books;
-      this.category = params.category;
-      this.chapters = params.chapters;
-      this.comments = params.comments;
-      this.description = params.description;
-      this.episodesInSeason = params.episodesInSeason;
-      this.filmGenre = params.filmGenre;
-      this.id = params.id;
-      this.imageLink = params.imageLink;
-      this.link = params.link;
-      this.myTop = params.myTop;
-      this.name = params.name;
-      this.remangaGrade = params.remangaGrade;
-      this.seasons = params.seasons;
-      this.release = params.release;
-      this.state = params.state;
-      this.views = params.views;
+      this.IMDb = params.IMDb || 0;
+      this.books = params.books || 0;
+      this.category = params.category || '';
+      this.chapters = params.chapters || 0;
+      this.comments = params.comments || '';
+      this.description = params.description || '';
+      this.episodesInSeason = params.episodesInSeason || '';
+      this.filmGenre = params.filmGenre || '';
+      this.id = params.id || '';
+      this.imageLink = params.imageLink || '';
+      this.link = params.link || '';
+      this.myTop = params.myTop || 0;
+      this.name = params.name || '';
+      this.remangaGrade = params.remangaGrade || 0;
+      this.seasons = params.seasons || '';
+      this.release = params.release || '';
+      this.state = params.state || '';
+      this.views = params.views || '';
     }
   }
 }

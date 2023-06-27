@@ -10,3 +10,16 @@
 .container-fluid {
   background-color: #fafafa;
 }
+
+.modal-backdrop {
+  opacity: 0.9 !important;
+}
+
+.modal-dialog {
+  border: 1px solid #ffe8e8 !important;
+  border-radius: 5px;
+}
+
+body {
+  background: rgb(4, 15, 6);
+}
