@@ -15,6 +15,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { firebaseconfig } from '../firebaseconfig';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DescriptionFileComponent } from './description-file/description-file-component';
+import { PipesModule } from './pipes/pipes.module';
+import { ScrollDirective } from './directives/scroll/scroll.directive';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -26,6 +28,7 @@ import { DescriptionFileComponent } from './description-file/description-file-co
     HomeComponent,
     NavbarComponent,
     DescriptionFileComponent,
+    ScrollDirective,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { DescriptionFileComponent } from './description-file/description-file-co
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseconfig),
     AngularFirestoreModule,
+    PipesModule,
   ],
   providers: [],
 })

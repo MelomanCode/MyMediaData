@@ -32,8 +32,9 @@ export class HomeComponent implements OnInit {
   mangaArray: IManga[] = [];
   audiobookArray: IAudiobook[] = [];
   showArray: IEntity[] = [];
-
   editableEntity: Entity = new Entity();
+  searchValue = '';
+  scrollDirection: 'up' | 'down' = 'up';
 
   constructor(
     private modalService: NgbModal,
@@ -111,6 +112,10 @@ export class HomeComponent implements OnInit {
   }
 
   truncateString(originalString: string): string {
-    return originalString.slice(0, 120) + '...';
+    return originalString.slice(0, 150) + '...';
+  }
+
+  onScrollDirection(direction: string) {
+    this.scrollDirection = direction as 'up' | 'down';
   }
 }

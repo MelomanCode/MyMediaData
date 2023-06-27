@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EntityTypes, TAB_NAMES_LIST } from '../interfaces/constants';
 
 @Component({
@@ -7,11 +7,19 @@ import { EntityTypes, TAB_NAMES_LIST } from '../interfaces/constants';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  @Input() scrollDirection = 'up';
   @Output() changeTabEmit = new EventEmitter<EntityTypes>();
+  @Output() searchEmmit = new EventEmitter<string>();
+
+  searchValue = '';
 
   public tabNamesList = TAB_NAMES_LIST;
 
   changeTab(tab: EntityTypes) {
     this.changeTabEmit.emit(tab);
+  }
+
+  updateSearchValue() {
+    this.searchEmmit.emit(this.searchValue);
   }
 }

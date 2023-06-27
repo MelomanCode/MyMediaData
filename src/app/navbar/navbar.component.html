@@ -1,4 +1,7 @@
-<div class="sticky-wrap">
+<div
+  class="sticky-wrap"
+  [ngStyle]="{ top: scrollDirection === 'down' ? '-80px' : '0' }"
+>
   <div class="items-space">
     <img
       (click)="changeTab('home')"
@@ -23,13 +26,14 @@
       <input
         name="searchid"
         type="hidden"
-        value="2266622"
       />
       <input
         name="text"
         placeholder="Search"
         required
         type="search"
+        [(ngModel)]="searchValue"
+        (keyup)="updateSearchValue()"
       />
       <input
         alt="#"
@@ -39,3 +43,8 @@
     </form>
   </div>
 </div>
+<div
+  class="sticky-wrap"
+  style="opacity: 0.7; z-index: 1; background-color: #0c0202"
+  [ngStyle]="{ top: scrollDirection === 'down' ? '-80px' : '0' }"
+></div>

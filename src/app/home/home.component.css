@@ -14,5 +14,17 @@
 th {
   text-align: center;
   font-size: 16px;
+  background: rgb(4,15,6);
+  background: linear-gradient(0deg, rgba(4,15,6,1) 0%, rgba(0,0,0,1) 100%);
+  color: #ffe8e8;
+  border-color: black;
+}
+.wrapper {
+  background: rgb(4,15,6);
+  background: linear-gradient(0deg, rgba(4,15,6,1) 0%, rgba(0,0,0,1) 100%);
+  padding-top: 80px;
+}
+.table tr {
+  border-color: black;
 }
 

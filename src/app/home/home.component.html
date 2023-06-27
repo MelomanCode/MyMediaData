@@ -1,84 +1,104 @@
-<app-navbar-component
-  (changeTabEmit)="changeTab($event)"
-></app-navbar-component>
+<div class="wrapper">
+  <app-navbar-component
+    [scrollDirection]="scrollDirection"
+    (changeTabEmit)="changeTab($event)"
+    (searchEmmit)="searchValue = $event"
+  >
+  </app-navbar-component>
 
-<div
-  class="table"
-  *ngIf="tab !== 'home'"
->
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Image</th>
-        <th
-          scope="col"
-          style="width: 400px"
-        >
-          Name
-        </th>
-        <th scope="col">Description</th>
-        <th
-          scope="col"
-          style="width: 200px"
-        >
-          My Top Rating
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let entity of showArray">
-        <th
-          style="width: 140px"
-          class="align-middle"
-        >
-          <img
-            [alt]="entity.imageLink"
-            [src]="entity.imageLink"
-            class="preview"
-          />
-        </th>
-        <td
-          class="align-middle"
-          style="font-size: 18px"
-        >
-          <b
-            class="aboutTab"
-            (click)="about(entity)"
-            >{{ entity.name }}</b
+  <div
+    appScrollDirection
+    (scrollDirection)="onScrollDirection($event)"
+    class="table"
+    *ngIf="tab !== 'home'"
+  >
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th
+            scope="col"
+            style="width: 400px"
           >
-        </td>
-        <td class="align-middle">{{ truncateString(entity.description) }}</td>
-        <td
-          class="align-middle"
-          style="font-size: 18px"
-        >
-          <b>{{ entity.myTop }}</b>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<ng-template
-  #content
-  let-modal
->
-  <div class="modal-header">
-    <h4 class="modal-title">Полное описание</h4>
-    <button
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-      class="btn-close"
-      type="button"
-    ></button>
+            Name
+          </th>
+          <th scope="col">Description</th>
+          <th
+            scope="col"
+            style="width: 200px"
+          >
+            My Top Rating
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entity of showArray | search : searchValue">
+          <th
+            style="width: 140px"
+            class="align-middle"
+          >
+            <img
+              [alt]="entity.imageLink"
+              [src]="entity.imageLink"
+              class="preview"
+            />
+          </th>
+          <td
+            class="align-middle"
+            style="font-size: 18px"
+          >
+            <b
+              class="aboutTab"
+              (click)="about(entity)"
+              >{{ entity.name }}</b
+            >
+          </td>
+          <td class="align-middle">{{ truncateString(entity.description) }}</td>
+          <td
+            class="align-middle"
+            style="font-size: 18px"
+          >
+            <b>{{ entity.myTop }}</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="modal-body">
-    <app-description-file
-      [editableEntity]="editableEntity"
-      [type]="tab"
+
+  <ng-template
+    #content
+    let-modal
+  >
+    <div
+      class="modal-header"
+      style="background: rgb(0, 0, 0); border: none; color: #ffe8e8"
     >
-    </app-description-file>
-  </div>
-  <div class="modal-body"></div>
-
-</ng-template>
+      <h4 class="modal-title">Полное описание</h4>
+      <button
+        (click)="modal.dismiss('Cross click')"
+        aria-label="Close"
+        class="btn-close"
+        type="button"
+        style="background-color: #ffe8e8"
+      ></button>
+    </div>
+    <div
+      class="modal-body"
+      style="
+        background: rgb(4, 15, 6);
+        background: linear-gradient(
+          0deg,
+          rgba(4, 15, 6, 1) 0%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        color: #ffe8e8;
+      "
+    >
+      <app-description-file
+        [editableEntity]="editableEntity"
+        [type]="tab"
+      >
+      </app-description-file>
+    </div>
+  </ng-template>
+</div>
