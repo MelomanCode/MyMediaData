@@ -23,6 +23,8 @@ th {
   background: rgb(4,15,6);
   background: linear-gradient(0deg, rgba(4,15,6,1) 0%, rgba(0,0,0,1) 100%);
   padding-top: 80px;
+  background: rgb(4, 15, 6) !important;
+  min-height: 100vh;
 }
 .table tr {
   border-color: black;

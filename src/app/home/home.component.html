@@ -10,9 +10,13 @@
     appScrollDirection
     (scrollDirection)="onScrollDirection($event)"
     class="table"
+    style="margin-bottom: 0"
     *ngIf="tab !== 'home'"
   >
-    <table class="table table-striped">
+    <table
+      class="table table-striped"
+      style="margin-bottom: 0"
+    >
       <thead>
         <tr>
           <th scope="col">Image</th>
@@ -38,14 +42,18 @@
             style="width: 200px"
           >
             My Top Rating
-            <span (click)="sortTrigger('myTop')"><i
-              *ngIf="myTopSortTrigger === 'a-z' || myTopSortTrigger === 'null'"
-              class="fa fa-caret-down"
-            ></i>
+            <span (click)="sortTrigger('myTop')"
+              ><i
+                *ngIf="
+                  myTopSortTrigger === 'a-z' || myTopSortTrigger === 'null'
+                "
+                class="fa fa-caret-down"
+              ></i>
               <i
                 *ngIf="myTopSortTrigger === 'z-a'"
                 class="fa fa-caret-up"
-              ></i></span>
+              ></i
+            ></span>
           </th>
         </tr>
       </thead>
