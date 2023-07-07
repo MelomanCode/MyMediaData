@@ -25,6 +25,7 @@ th {
   padding-top: 80px;
   background: rgb(4, 15, 6) !important;
   min-height: 100vh;
+  min-width: 1200px;
 }
 .table tr {
   border-color: black;
