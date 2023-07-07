@@ -3,7 +3,7 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "y",
+    "public": "dist/my-media-data",
     "ignore": [
       "firebase.json",
       "**/.*",
