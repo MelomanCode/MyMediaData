@@ -1,6 +1,6 @@
 <div
   class="sticky-wrap"
-  [ngStyle]="{ top: scrollDirection === 'down' ? '-80px' : '0' }"
+  [ngClass]="{ 'nav-hidden': scrollDirection === 'down' }"
 >
   <div class="items-space">
     <img
@@ -9,15 +9,21 @@
       class="nav-logo"
       src="https://img1.mnogo-futbolochek.ru/images/0/2/2900/2900721/previews/people_2_sign_front_white_700.jpg"
     />
+    <div class="logo-text"><span>MelomanDataBase</span></div>
+  </div>
+
+  <div
+    class="items-space"
+    *ngFor="let tabName of tabNamesList"
+  >
     <a
       class="custom-link"
       (click)="changeTab(tabName)"
-      *ngFor="let tabName of tabNamesList"
     >
       {{ tabName | titlecase }}
     </a>
   </div>
-  <div class="logo-text"><span>MelomanDataBase</span></div>
+
   <div class="nav-search">
     <form
       action="/search/"
@@ -47,5 +53,5 @@
 <div
   class="sticky-wrap"
   style="opacity: 0.7; z-index: 1; background-color: #0c0202"
-  [ngStyle]="{ top: scrollDirection === 'down' ? '-80px' : '0' }"
+  [ngClass]="{ 'nav-hidden': scrollDirection === 'down' }"
 ></div>
