@@ -9,6 +9,7 @@
   transition: 500ms;
   opacity: 1;
   z-index: 2;
+  min-width: 1428px;
 }
 
 .items-space {
@@ -100,7 +101,7 @@
 
 .logo-text {
   color: #f8c9c9;
-  font-family: matura mt script capitals;
+  font-family: 'Matura MT Script Capitals', sans-serif;
   align-items: center;
 }
 
