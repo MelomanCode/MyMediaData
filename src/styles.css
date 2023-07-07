@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/matura-mt-script-capitals');
+
 .form-control.ng-invalid,
 .was-validated .form-control:invalid {
   border-color: #dc3545;

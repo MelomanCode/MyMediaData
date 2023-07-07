@@ -58,7 +58,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let entity of showArray | search : searchValue">
+        <tr
+          *ngFor="let entity of showArray | search : searchValue"
+          (click)="about(entity)"
+        >
           <th
             style="width: 140px"
             class="align-middle"
@@ -73,11 +76,7 @@
             class="align-middle"
             style="font-size: 18px"
           >
-            <b
-              class="aboutTab"
-              (click)="about(entity)"
-              >{{ entity.name }}</b
-            >
+            <b class="aboutTab">{{ entity.name }}</b>
           </td>
           <td class="align-middle">{{ truncateString(entity.description) }}</td>
           <td

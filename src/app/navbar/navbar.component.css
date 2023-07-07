@@ -9,7 +9,6 @@
   transition: 500ms;
   opacity: 1;
   z-index: 2;
-  min-width: 1428px;
 }
 
 .items-space {
@@ -23,10 +22,10 @@
   text-decoration: none;
   margin-left: 50px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   color: #e7e7e7;
   transition: color 500ms linear;
-  font-family: cursive;
+  font-style: italic;
   cursor: pointer;
 }
 
