@@ -1,9 +1,25 @@
 <div class="main">
   <div class="admin-tabs">
+    <div class="menu-tools">
+      <app-sandwich
+      (toggleSidenavEvent)="toggleMenu()"
+      [isOpenMenu]="isMenuOpen"
+    ></app-sandwich>
+    <div>
+      <button
+        (click)="add()"
+        class="btn btn-outline-dark"
+        type="button"
+      >
+        Add New
+      </button>
+    </div>
+    </div>
     <div
       aria-label="Tabs"
       class="btn-group"
       role="group"
+      [ngClass]="{'menu-hide': isMenuOpen}"
     >
       <button
         (click)="changeTab(tabName)"
@@ -15,13 +31,7 @@
         {{ tabName | titlecase }}
       </button>
     </div>
-    <button
-      (click)="add()"
-      class="btn btn-outline-dark"
-      type="button"
-    >
-      Add New
-    </button>
+
   </div>
 </div>
 
@@ -37,7 +47,12 @@
           Name
         </th>
         <th scope="col">Description</th>
-        <th scope="col" style="width: 200px">My Top Rating</th>
+        <th
+          scope="col"
+          style="width: 200px"
+        >
+          My Top Rating
+        </th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -53,11 +68,17 @@
             class="preview"
           />
         </th>
-        <td class="align-middle" style="font-size: 18px">
+        <td
+          class="align-middle"
+          style="font-size: 18px"
+        >
           <b>{{ entity.name }}</b>
         </td>
         <td class="align-middle">{{ truncateString(entity.description) }}</td>
-        <td class="align-middle" style="font-size: 18px">
+        <td
+          class="align-middle"
+          style="font-size: 18px"
+        >
           <b>{{ entity.myTop }}</b>
         </td>
         <td

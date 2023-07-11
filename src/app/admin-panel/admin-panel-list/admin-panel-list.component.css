@@ -22,3 +22,43 @@ th {
   font-size: 16px;
 }
 
+app-sandwich {
+  display: none;
+}
+
+@media (max-width: 580px) {
+  .admin-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .btn-group > button {
+  margin: 10px 0 10px 0;
+  }
+
+.menu-hide > button {
+  display: none;
+}
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  app-sandwich {
+    display: block;
+  }
+  .menu-tools {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+
+

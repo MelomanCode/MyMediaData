@@ -17,6 +17,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DescriptionFileComponent } from './description-file/description-file-component';
 import { PipesModule } from './pipes/pipes.module';
 import { ScrollDirective } from './directives/scroll/scroll.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { SandwichModule } from './sandwich/sandwich.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -42,6 +48,12 @@ import { ScrollDirective } from './directives/scroll/scroll.directive';
     AngularFireModule.initializeApp(firebaseconfig),
     AngularFirestoreModule,
     PipesModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    SandwichModule,
   ],
   providers: [],
 })

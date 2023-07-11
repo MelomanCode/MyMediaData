@@ -48,21 +48,21 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const promise1 = this.filmsService.getValues().then((filmsList) => {
-      this.filmArray = Array.from(filmsList);
-    });
-
-    const promise2 = this.seriesService.getValues().then((seriesList) => {
-      this.seriesArray = Array.from(seriesList);
-    });
-
-    const promise3 = this.animeService.getValues().then((animeList) => {
-      this.animeArray = Array.from(animeList);
-    });
-
-    const promise4 = this.mangaService.getValues().then((mangaList) => {
-      this.mangaArray = Array.from(mangaList);
-    });
+    // const promise1 = this.filmsService.getValues().then((filmsList) => {
+    //   this.filmArray = Array.from(filmsList);
+    // });
+    //
+    // const promise2 = this.seriesService.getValues().then((seriesList) => {
+    //   this.seriesArray = Array.from(seriesList);
+    // });
+    //
+    // const promise3 = this.animeService.getValues().then((animeList) => {
+    //   this.animeArray = Array.from(animeList);
+    // });
+    //
+    // const promise4 = this.mangaService.getValues().then((mangaList) => {
+    //   this.mangaArray = Array.from(mangaList);
+    // });
 
     const promise5 = this.audiobooksService
       .getValues()
@@ -70,7 +70,12 @@ export class HomeComponent implements OnInit {
         this.audiobookArray = Array.from(audiobooksList);
       });
 
-    Promise.all([promise1, promise2, promise3, promise4, promise5]).then(() => {
+    // Promise.all([promise1, promise2, promise3, promise4, promise5]).then(() => {
+    //   this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
+    // });
+
+    // TODO: delete after uncomment
+    Promise.all([promise5]).then(() => {
       this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
     });
   }
