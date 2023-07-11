@@ -5,7 +5,7 @@
       (toggleSidenavEvent)="toggleMenu()"
       [isOpenMenu]="isMenuOpen"
     ></app-sandwich>
-    <div>
+    <div class="tab-add">
       <button
         (click)="add()"
         class="btn btn-outline-dark"
@@ -31,13 +31,12 @@
         {{ tabName | titlecase }}
       </button>
     </div>
-
   </div>
-</div>
 
-<div class="table">
-  <table class="table table-striped table-bordered">
-    <thead>
+<div style="overflow-x: scroll; margin-top: 15px">
+  <div class="table">
+    <table class="table table-striped table-bordered">
+      <thead>
       <tr>
         <th scope="col">Image</th>
         <th
@@ -55,8 +54,8 @@
         </th>
         <th scope="col">Actions</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr *ngFor="let entity of showArray">
         <th
           style="width: 140px"
@@ -102,9 +101,13 @@
           </button>
         </td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>
+</div>
+
+
 
 <ng-template
   #content

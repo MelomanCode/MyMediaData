@@ -4,7 +4,7 @@
 
 .admin-tabs {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
 }
@@ -24,6 +24,9 @@ th {
 
 app-sandwich {
   display: none;
+}
+
+.tab-add {
 }
 
 @media (max-width: 580px) {
@@ -50,7 +53,8 @@ app-sandwich {
   }
 
   app-sandwich {
-    display: block;
+    display: flex;
+    align-items: center;
   }
   .menu-tools {
     width: 100%;
