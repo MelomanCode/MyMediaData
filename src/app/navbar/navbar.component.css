@@ -110,7 +110,7 @@
   align-items: center;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .sticky-wrap {
     flex-direction: column;
     height: 420px;

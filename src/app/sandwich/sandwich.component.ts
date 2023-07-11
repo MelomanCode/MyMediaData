@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sandwich',
@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./sandwich.component.css'],
 })
 export class SandwichComponent {
-  @Input() isOpenMenu = false;
   @Output() toggleSidenavEvent = new EventEmitter<void>();
 
   toggleSidenav() {

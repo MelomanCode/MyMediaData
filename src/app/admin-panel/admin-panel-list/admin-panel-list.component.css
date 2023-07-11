@@ -26,10 +26,18 @@ app-sandwich {
   display: none;
 }
 
-.tab-add {
+.flex-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
-@media (max-width: 580px) {
+.actions-buttons {
+  width: 32px; height: 32px; margin: 5px
+}
+
+@media (max-width: 768px) {
   .admin-tabs {
     display: flex;
     flex-direction: column;
@@ -61,6 +69,10 @@ app-sandwich {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .flex-buttons {
+    flex-direction: column;
   }
 }
 
