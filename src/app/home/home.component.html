@@ -39,7 +39,10 @@
               </span>
             </th>
             <th scope="col">Description</th>
-            <th (click)="sortTrigger('myTop')" style="min-width: 80px">
+            <th
+              (click)="sortTrigger('myTop')"
+              style="min-width: 80px"
+            >
               Rating
               <span
                 ><i
@@ -70,11 +73,14 @@
             </th>
             <td
               class="align-middle"
-              style="font-size: 18px"
+              style="font-size: 18px; width: 30%"
             >
               <b class="aboutTab">{{ entity.name }}</b>
             </td>
-            <td class="align-middle short-text" style="max-width: 100px">
+            <td
+              class="align-middle short-text"
+              style="max-width: 100px"
+            >
               {{ entity.description }}
             </td>
             <td

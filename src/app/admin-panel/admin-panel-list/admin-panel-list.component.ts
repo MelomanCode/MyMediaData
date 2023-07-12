@@ -45,38 +45,7 @@ export class AdminPanelListComponent implements OnInit {
     private audiobooksService: AudiobooksService
   ) {}
 
-  ngOnInit(): void {
-    // const promise1 = this.filmsService.getValues().then((filmsList) => {
-    //   this.filmArray = Array.from(filmsList);
-    // });
-    //
-    // const promise2 = this.seriesService.getValues().then((seriesList) => {
-    //   this.seriesArray = Array.from(seriesList);
-    // });
-    //
-    // const promise3 = this.animeService.getValues().then((animeList) => {
-    //   this.animeArray = Array.from(animeList);
-    // });
-    //
-    // const promise4 = this.mangaService.getValues().then((mangaList) => {
-    //   this.mangaArray = Array.from(mangaList);
-    // });
-
-    const promise5 = this.audiobooksService
-      .getValues()
-      .then((audiobooksList) => {
-        this.audiobookArray = Array.from(audiobooksList);
-      });
-    //
-    // Promise.all([promise1, promise2, promise3, promise4, promise5]).then(() => {
-    //   this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
-    // });
-
-    // TODO: delete after uncomment
-    Promise.all([promise5]).then(() => {
-      this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
-    });
-  }
+  ngOnInit(): void {}
 
   add() {
     this.editableEntity = new Entity();
@@ -131,27 +100,53 @@ export class AdminPanelListComponent implements OnInit {
     this.tab = tab;
     switch (this.tab) {
       case 'films':
-        this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
+        if (this.filmArray?.length) {
+          this.showArray = this.filmArray.map(
+            (el) => new Entity(el as IEntity)
+          );
+        } else {
+          this.getFilms();
+        }
         break;
 
       case 'series':
-        this.showArray = this.seriesArray.map(
-          (el) => new Entity(el as IEntity)
-        );
+        if (this.seriesArray?.length) {
+          this.showArray = this.seriesArray.map(
+            (el) => new Entity(el as IEntity)
+          );
+        } else {
+          this.getSerials();
+        }
         break;
 
       case 'anime':
-        this.showArray = this.animeArray.map((el) => new Entity(el as IEntity));
+        if (this.animeArray?.length) {
+          this.showArray = this.animeArray.map(
+            (el) => new Entity(el as IEntity)
+          );
+        } else {
+          this.getAnime();
+        }
         break;
 
       case 'manga':
-        this.showArray = this.mangaArray.map((el) => new Entity(el as IEntity));
+        if (this.mangaArray?.length) {
+          this.showArray = this.mangaArray.map(
+            (el) => new Entity(el as IEntity)
+          );
+        } else {
+          this.getManga();
+        }
         break;
 
       case 'audiobooks':
-        this.showArray = this.audiobookArray.map(
-          (el) => new Entity(el as IEntity)
-        );
+        if (this.audiobookArray?.length) {
+          this.showArray = this.audiobookArray.map(
+            (el) => new Entity(el as IEntity)
+          );
+        } else {
+          this.getAudiobooks();
+        }
         break;
     }
   }
@@ -249,5 +244,42 @@ export class AdminPanelListComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  private getSerials(): void {
+    this.seriesService.getValues().then((seriesList) => {
+      this.seriesArray = Array.from(seriesList);
+      this.showArray = this.seriesArray.map((el) => new Entity(el as IEntity));
+    });
+  }
+
+  private getFilms(): void {
+    this.filmsService.getValues().then((filmsList) => {
+      this.filmArray = Array.from(filmsList);
+      this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
+    });
+  }
+
+  private getAnime(): void {
+    this.animeService.getValues().then((animeList) => {
+      this.animeArray = Array.from(animeList);
+      this.showArray = this.animeArray.map((el) => new Entity(el as IEntity));
+    });
+  }
+
+  private getManga(): void {
+    this.mangaService.getValues().then((mangaList) => {
+      this.mangaArray = Array.from(mangaList);
+      this.showArray = this.mangaArray.map((el) => new Entity(el as IEntity));
+    });
+  }
+
+  private getAudiobooks(): void {
+    this.audiobooksService.getValues().then((audiobooksList) => {
+      this.audiobookArray = Array.from(audiobooksList);
+      this.showArray = this.audiobookArray.map(
+        (el) => new Entity(el as IEntity)
+      );
+    });
   }
 }
