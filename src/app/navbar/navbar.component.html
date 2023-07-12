@@ -1,20 +1,26 @@
 <div
   class="sticky-wrap"
-  [ngClass]="{ 'nav-hidden': scrollDirection === 'down' }"
+  [ngClass]="{ 'nav-hidden': scrollDirection === 'down', 'mobile-height': !isMenuOpen }"
 >
-  <div class="items-space">
+  <div class="items-space-logo">
     <img
       (click)="changeTab('home')"
       alt="image"
       class="nav-logo"
       src="https://img1.mnogo-futbolochek.ru/images/0/2/2900/2900721/previews/people_2_sign_front_white_700.jpg"
     />
-    <div class="logo-text"><span>MelomanDataBase</span></div>
+    <div
+      class="logo-text"
+      (click)="toggleMenu()"
+    >
+      <span>MelomanDataBase</span>
+    </div>
   </div>
 
   <div
     class="items-space"
     *ngFor="let tabName of tabNamesList"
+    [ngClass]="{ 'hidden-items': !isMenuOpen }"
   >
     <a
       class="custom-link"
@@ -23,8 +29,10 @@
       {{ tabName | titlecase }}
     </a>
   </div>
-
-  <div class="nav-search">
+  <div
+    class="nav-search"
+    [ngClass]="{ 'hidden-items': scrollDirection === 'down' }"
+  >
     <form
       action="/search/"
       class="form-search"
@@ -53,5 +61,5 @@
 <div
   class="sticky-wrap"
   style="opacity: 0.7; z-index: 1; background-color: #0c0202"
-  [ngClass]="{ 'nav-hidden': scrollDirection === 'down' }"
+  [ngClass]="{ 'nav-hidden': scrollDirection === 'down', 'mobile-height': !isMenuOpen }"
 ></div>

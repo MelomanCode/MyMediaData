@@ -12,6 +12,7 @@ export class NavbarComponent {
   @Output() searchEmmit = new EventEmitter<string>();
 
   searchValue = '';
+  isMenuOpen = false;
 
   public tabNamesList = TAB_NAMES_LIST;
 
@@ -21,5 +22,10 @@ export class NavbarComponent {
 
   updateSearchValue() {
     this.searchEmmit.emit(this.searchValue);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    console.log(this.isMenuOpen);
   }
 }

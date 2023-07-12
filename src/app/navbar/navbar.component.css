@@ -17,10 +17,16 @@
 
 .items-space {
   display: flex;
-
-  height: 60px;
+  height: 70px;
   align-items: center;
 }
+
+.items-space-logo {
+  display: flex;
+  height: 75px;
+  align-items: center;
+}
+
 
 .custom-link {
   text-decoration: none;
@@ -44,6 +50,10 @@
   height: 70px;
   border-radius: 35px;
   cursor: pointer;
+}
+
+app-sandwich {
+  display: none;
 }
 
 .nav-search {
@@ -114,9 +124,48 @@
   .sticky-wrap {
     flex-direction: column;
     height: 420px;
+
   }
 
   .nav-hidden {
     top: -425px;
+  }
+
+  .hidden-items {
+    opacity: 0;
+    transition: none;
+  }
+
+  .mobile-height {
+    height: 80px;
+  }
+
+  .items-space-logo {
+    display: flex;
+    height: 75px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .nav-search {
+    position: fixed;
+    top: 19px;
+    right: 10px;
+  }
+
+  .nav-hidden {
+    display: flex;
+  }
+
+  .items-space {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  app-sandwich {
+    display: block;
   }
 }
