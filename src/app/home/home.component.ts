@@ -141,6 +141,7 @@ export class HomeComponent implements OnInit {
     });
   }
   sortTrigger(field: 'name' | 'myTop') {
+    console.log('sadsa');
     if (field === 'name') {
       this.nameSortTrigger === 'a-z'
         ? this.sort('z-a', field)
@@ -156,10 +157,6 @@ export class HomeComponent implements OnInit {
         ? (this.myTopSortTrigger = 'z-a')
         : (this.myTopSortTrigger = 'a-z');
     }
-  }
-
-  truncateString(originalString: string): string {
-    return originalString.slice(0, 150) + '...';
   }
 
   onScrollDirection(direction: string) {

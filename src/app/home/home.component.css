@@ -30,3 +30,23 @@ th {
   border-color: black;
 }
 
+.short-text {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .table td,
+  th {
+    color: #fde1e1 !important;
+    font-size: 11px !important;
+
+  }
+
+  .preview {
+    width: 60px;
+  }
+}
+

@@ -5,89 +5,88 @@
     (searchEmmit)="searchValue = $event"
   >
   </app-navbar-component>
-
-  <div
-    appScrollDirection
-    (scrollDirection)="onScrollDirection($event)"
-    class="table"
-    style="margin-bottom: 0"
-    *ngIf="tab !== 'home'"
-  >
-    <table
-      class="table table-striped"
+  <div style="overflow-x: auto">
+    <div
+      appScrollDirection
+      (scrollDirection)="onScrollDirection($event)"
+      class="table"
       style="margin-bottom: 0"
+      *ngIf="tab !== 'home'"
     >
-      <thead>
-        <tr>
-          <th scope="col">Image</th>
-          <th
-            scope="col"
-            style="width: 400px"
+      <table
+        class="table table-striped"
+        style="margin-bottom: 0"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th
+              (click)="sortTrigger('name')"
+              scope="col"
+            >
+              Name
+              <span
+                ><i
+                  *ngIf="
+                    nameSortTrigger === 'a-z' || nameSortTrigger === 'null'
+                  "
+                  class="fa fa-caret-down"
+                ></i>
+                <i
+                  *ngIf="nameSortTrigger === 'z-a'"
+                  class="fa fa-caret-up"
+                ></i>
+              </span>
+            </th>
+            <th scope="col">Description</th>
+            <th (click)="sortTrigger('myTop')" style="min-width: 80px">
+              Rating
+              <span
+                ><i
+                  *ngIf="
+                    myTopSortTrigger === 'a-z' || myTopSortTrigger === 'null'
+                  "
+                  class="fa fa-caret-down"
+                ></i
+                ><i
+                  *ngIf="myTopSortTrigger === 'z-a'"
+                  class="fa fa-caret-up"
+                ></i
+              ></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let entity of showArray | search : searchValue"
+            (click)="about(entity)"
           >
-            Name
-            <span (click)="sortTrigger('name')"
-              ><i
-                *ngIf="nameSortTrigger === 'a-z' || nameSortTrigger === 'null'"
-                class="fa fa-caret-down"
-              ></i>
-              <i
-                *ngIf="nameSortTrigger === 'z-a'"
-                class="fa fa-caret-up"
-              ></i>
-            </span>
-          </th>
-          <th scope="col">Description</th>
-          <th
-            scope="col"
-            style="width: 200px"
-          >
-            My Top Rating
-            <span (click)="sortTrigger('myTop')"
-              ><i
-                *ngIf="
-                  myTopSortTrigger === 'a-z' || myTopSortTrigger === 'null'
-                "
-                class="fa fa-caret-down"
-              ></i>
-              <i
-                *ngIf="myTopSortTrigger === 'z-a'"
-                class="fa fa-caret-up"
-              ></i
-            ></span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="let entity of showArray | search : searchValue"
-          (click)="about(entity)"
-        >
-          <th
-            style="width: 140px"
-            class="align-middle"
-          >
-            <img
-              [alt]="entity.imageLink"
-              [src]="entity.imageLink"
-              class="preview"
-            />
-          </th>
-          <td
-            class="align-middle"
-            style="font-size: 18px"
-          >
-            <b class="aboutTab">{{ entity.name }}</b>
-          </td>
-          <td class="align-middle">{{ truncateString(entity.description) }}</td>
-          <td
-            class="align-middle"
-            style="font-size: 18px"
-          >
-            <b>{{ entity.myTop }}</b>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <th class="align-middle">
+              <img
+                [alt]="entity.imageLink"
+                [src]="entity.imageLink"
+                class="preview"
+              />
+            </th>
+            <td
+              class="align-middle"
+              style="font-size: 18px"
+            >
+              <b class="aboutTab">{{ entity.name }}</b>
+            </td>
+            <td class="align-middle short-text" style="max-width: 100px">
+              {{ entity.description }}
+            </td>
+            <td
+              class="align-middle"
+              style="font-size: 18px"
+            >
+              <b>{{ entity.myTop }}</b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <ng-template
