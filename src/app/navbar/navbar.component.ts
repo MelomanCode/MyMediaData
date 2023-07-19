@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EntityTypes, TAB_NAMES_LIST } from '../interfaces/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-component',
@@ -16,6 +17,8 @@ export class NavbarComponent {
 
   public tabNamesList = TAB_NAMES_LIST;
 
+  constructor(private router: Router) {}
+
   changeTab(tab: EntityTypes) {
     this.changeTabEmit.emit(tab);
   }
@@ -26,5 +29,9 @@ export class NavbarComponent {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  logIn() {
+    this.router.navigate(['/authentication']).then();
   }
 }

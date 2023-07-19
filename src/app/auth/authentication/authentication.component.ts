@@ -23,4 +23,8 @@ export class AuthenticationComponent {
       }
     });
   }
+
+  returnBtn() {
+    this.router.navigate(['/home']).then();
+  }
 }

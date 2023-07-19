@@ -27,6 +27,18 @@
   align-items: center;
 }
 
+.sign-btn {
+  font-size: 16px;
+  cursor: pointer;
+  color: #faf0f0;
+}
+
+.sign-btn:hover {
+  color: #03c943;
+  transition: 500ms;
+  scale: 1.2;
+}
+
 .custom-link {
   text-decoration: none;
   font-size: 20px;
@@ -171,4 +183,9 @@ app-sandwich {
   app-sandwich {
     display: block;
   }
+
+  .sign-btn {
+margin-bottom: 8px;
+  }
+
 }

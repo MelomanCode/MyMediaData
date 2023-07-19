@@ -1,6 +1,9 @@
 <div
   class="sticky-wrap"
-  [ngClass]="{ 'nav-hidden': scrollDirection === 'down', 'mobile-height': !isMenuOpen }"
+  [ngClass]="{
+    'nav-hidden': scrollDirection === 'down',
+    'mobile-height': !isMenuOpen
+  }"
 >
   <div class="items-space-logo">
     <img
@@ -16,7 +19,6 @@
       <span>MelomanDataBase</span>
     </div>
   </div>
-
   <div
     class="items-space"
     *ngFor="let tabName of tabNamesList"
@@ -28,6 +30,13 @@
     >
       {{ tabName | titlecase }}
     </a>
+  </div>
+  <div
+    class="sign-btn"
+    (click)="logIn()"
+    [ngClass]="{ 'hidden-items': !isMenuOpen }"
+  >
+    Sign in
   </div>
   <div
     class="nav-search"
@@ -61,5 +70,8 @@
 <div
   class="sticky-wrap"
   style="opacity: 0.7; z-index: 1; background-color: #0c0202"
-  [ngClass]="{ 'nav-hidden': scrollDirection === 'down', 'mobile-height': !isMenuOpen }"
+  [ngClass]="{
+    'nav-hidden': scrollDirection === 'down',
+    'mobile-height': !isMenuOpen
+  }"
 ></div>
