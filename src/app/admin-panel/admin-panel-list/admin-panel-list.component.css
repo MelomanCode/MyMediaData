@@ -1,5 +1,56 @@
 .main {
   margin: 20px;
+  background: #fadede;
+}
+
+.user-icon {
+  height: 50px;
+  border-radius: 50px;
+  z-index: 99;
+  cursor: pointer;
+  margin-left: -25px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  margin-left: 70px;
+}
+
+.log-out-btn {
+  border: 1px solid black;
+  border-left: none;
+  height: 50px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px 0 0 50px;
+  background-color: #333131;
+  color: #fafafa;
+}
+
+.tab-add {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.log-out-btn:hover {
+  background-color: #08090a;
+  cursor: pointer;
+  color: #ad1818;
+}
+
+.vis-log {
+  width: 120px;
+  transition: 500ms;
+}
+
+.hid-log {
+  width: 0;
+  transition: 500ms;
 }
 
 .admin-tabs {
@@ -64,6 +115,12 @@ app-sandwich {
     display: flex;
     align-items: center;
   }
+
+
+  .avatar {
+    margin-left: 40px;
+  }
+
   .menu-tools {
     width: 100%;
     display: flex;

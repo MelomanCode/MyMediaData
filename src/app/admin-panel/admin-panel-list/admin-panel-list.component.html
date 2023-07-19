@@ -7,11 +7,33 @@
           (click)="add()"
           class="btn btn-outline-dark"
           type="button"
+          style="width: 120px; height: 38px"
         >
           Add New
         </button>
+
+        <div
+          class="avatar"
+          *ngIf="user"
+        >
+          <div
+            (click)="logout()"
+            class="log-out-btn"
+            [ngClass]="{ 'hid-log': !userIconState, 'vis-log': userIconState }"
+          >
+            Log out
+          </div>
+          <img
+            class="user-icon"
+            (click)="changeUserIconState()"
+            *ngIf="user.photoURL"
+            [src]="user.photoURL"
+            alt="avatar"
+          />
+        </div>
       </div>
     </div>
+
     <div
       aria-label="Tabs"
       class="btn-group"

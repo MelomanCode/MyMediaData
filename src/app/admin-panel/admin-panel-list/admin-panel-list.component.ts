@@ -15,6 +15,7 @@ import { SeriesService } from '../../services/series.service';
 import { AnimeService } from '../../services/anime.service';
 import { AudiobooksService } from '../../services/audiobooks.service';
 import { MangaService } from '../../services/manga.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-admin-panel-list',
@@ -33,6 +34,8 @@ export class AdminPanelListComponent implements OnInit {
   audiobookArray: IAudiobook[] = [];
   showArray: IEntity[] = [];
   isMenuOpen = false;
+  user: any;
+  userIconState = false;
 
   editableEntity: Entity = new Entity();
 
@@ -42,10 +45,23 @@ export class AdminPanelListComponent implements OnInit {
     private seriesService: SeriesService,
     private animeService: AnimeService,
     private mangaService: MangaService,
-    private audiobooksService: AudiobooksService
+    private audiobooksService: AudiobooksService,
+    public auth: AngularFireAuth
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.auth.user.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  logout(): void {
+    this.auth.signOut().then();
+  }
+
+  changeUserIconState() {
+    this.userIconState = !this.userIconState;
+  }
 
   add() {
     this.editableEntity = new Entity();

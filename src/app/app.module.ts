@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SandwichModule } from './sandwich/sandwich.module';
+import { AuthenticationComponent } from './auth/authentication/authentication.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -35,6 +36,7 @@ import { SandwichModule } from './sandwich/sandwich.module';
     NavbarComponent,
     DescriptionFileComponent,
     ScrollDirective,
+    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,
