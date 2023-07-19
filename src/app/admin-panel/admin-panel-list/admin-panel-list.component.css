@@ -139,11 +139,11 @@ app-sandwich {
 
 .site-footer
 {
-  background-color:#26272b;
+  background-color: #91c2b4;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
-  color:#737373;
+  color: #0c0202;
 }
 .site-footer hr
 {
@@ -182,7 +182,7 @@ app-sandwich {
 }
 .footer-links a
 {
-  color:#737373
+  color: #0c0202
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
@@ -205,7 +205,7 @@ app-sandwich {
   margin-left:6px;
   margin-right:0;
   border-radius:100%;
-  background-color:#33353d
+  background-color: #505459
 }
 .copyright-text
 {
@@ -279,7 +279,7 @@ app-sandwich {
 {
   background-color:#3b5998
 }
-.social-icons a.twitter:hover
+.social-icons a.telegram:hover
 {
   background-color:#00aced
 }
@@ -287,7 +287,7 @@ app-sandwich {
 {
   background-color:#007bb6
 }
-.social-icons a.dribbble:hover
+.social-icons a.instagram:hover
 {
   background-color:#ea4c89
 }
