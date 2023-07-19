@@ -43,12 +43,22 @@ body,
 .stage {
   height: 100vh;
   width: 100vw;
-  background-color: #858585;
-
+  background-image: url("https://wallpaperaccess.com/full/1605746.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .stage {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  html,
+  body,
+  .stage {
+    background-image: url("https://w0.peakpx.com/wallpaper/324/700/HD-wallpaper-got-game-of-thrones.jpg");
+  }
 }
