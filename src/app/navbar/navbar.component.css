@@ -31,12 +31,16 @@
   font-size: 16px;
   cursor: pointer;
   color: #faf0f0;
+  font-style: italic;
+  transition: color 500ms linear;
+  font-weight: 700;
 }
 
 .sign-btn:hover {
   color: #03c943;
-  transition: 500ms;
+  transition: color 500ms linear;
   scale: 1.2;
+
 }
 
 .custom-link {

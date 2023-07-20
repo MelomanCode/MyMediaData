@@ -24,6 +24,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SandwichModule } from './sandwich/sandwich.module';
 import { AuthenticationComponent } from './auth/authentication/authentication.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -37,6 +38,7 @@ import { AuthenticationComponent } from './auth/authentication/authentication.co
     DescriptionFileComponent,
     ScrollDirective,
     AuthenticationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
