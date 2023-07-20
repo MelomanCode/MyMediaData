@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50px 0 0 50px;
-  background-color: #333131;
+  background-color: #250f25;
   color: #fafafa;
 }
 
@@ -39,11 +39,10 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-
 }
 
 .log-out-btn:hover {
-  background-color: #08090a;
+  background-color: #090510;
   cursor: pointer;
   color: #ad1818;
 }
@@ -77,9 +76,9 @@
 .table td,
 th {
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   color: #fde1e1;
-  background: rgba(9, 9, 9, 0.8)
+  background: rgba(9, 9, 9, 0.8);
 }
 
 app-sandwich {
@@ -94,7 +93,9 @@ app-sandwich {
 }
 
 .actions-buttons {
-  width: 32px; height: 32px; margin: 5px
+  width: 32px;
+  height: 32px;
+  margin: 5px;
 }
 
 @media (max-width: 768px) {
@@ -107,12 +108,12 @@ app-sandwich {
   }
 
   .btn-group > button {
-  margin: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
   }
 
-.menu-hide > button {
-  display: none;
-}
+  .menu-hide > button {
+    display: none;
+  }
 
   .btn-group {
     display: flex;
@@ -124,7 +125,6 @@ app-sandwich {
     display: flex;
     align-items: center;
   }
-
 
   .avatar {
     margin-left: 40px;
@@ -141,5 +141,3 @@ app-sandwich {
     flex-direction: column;
   }
 }
-
-
