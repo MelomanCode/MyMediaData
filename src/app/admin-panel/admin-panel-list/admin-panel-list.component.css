@@ -79,6 +79,7 @@ th {
   text-align: center;
   font-size: 16px;
   color: #fde1e1;
+  background: rgba(9, 9, 9, 0.8)
 }
 
 app-sandwich {

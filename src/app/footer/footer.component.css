@@ -153,6 +153,10 @@
 {
   background-color:#ea4c89
 }
+.social-icons a.gitHub:hover
+{
+  background-color: #1f1f1f
+}
 @media (max-width:767px)
 {
   .social-icons li.title

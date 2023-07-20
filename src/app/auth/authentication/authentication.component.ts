@@ -20,7 +20,9 @@ export class AuthenticationComponent implements OnInit {
   ngOnInit(): void {
     this.auth.user.subscribe((user) => {
       if (user) {
-        this.router.navigate(['/admin-panel-list']).then();
+        user.getIdToken().then(() => {
+          this.router.navigate(['/admin-panel-list']).then();
+        });
       }
     });
   }
