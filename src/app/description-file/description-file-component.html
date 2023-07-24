@@ -44,7 +44,7 @@
       <p><b>Мой комментарий: </b>{{editableEntity.comments}}</p>
       <p><b>Моя оценка: </b>{{editableEntity.myTop}}</p>
       <p><b>Кол-во просмотров(прослушиваниев) мной: </b>{{editableEntity.views}}</p>
-      <a><b>Ссылка на контент: </b>{{editableEntity.link}}</a>
+      <b>Ссылка на контент: </b><a [href]="editableEntity.link" target="_blank">{{editableEntity.link}}</a>
     </div>
   </div>
 </div>
