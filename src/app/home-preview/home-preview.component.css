@@ -1,0 +1,53 @@
+.swiper-container {
+  width: 700px;
+  height: 300px;
+  display: flex;
+}
+
+.swiper-slide {
+  background-color: #0c0202;
+    flex-direction: row;
+    display: flex;
+    color: #fde1e1;
+
+
+}
+
+.slide-content {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    justify-content: space-between;
+}
+
+.slide-name {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    font-family: "Century Gothic";
+    font-size: 20px;
+
+}
+
+.slide-setting {
+    justify-content: flex-start;
+    padding-left: 20px;
+    font-family: "Century Gothic";
+}
+
+.content-view {
+    padding-top: 15px;
+    font-family: "Century Gothic";
+}
+
+.title {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: red;
+    margin: 20px 0 40px 0;
+    background-color: #0a2733;
+}

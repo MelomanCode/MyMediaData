@@ -1,38 +1,25 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EntityTypes, TAB_NAMES_LIST } from '../../interfaces/constants';
-import {
-  Entity,
-  IAnime,
-  IAudiobook,
-  IEntity,
-  IFilm,
-  IManga,
-  ISeries,
-} from '../../interfaces/my-media-data.interfaces';
+import { TAB_NAMES_LIST } from '../../interfaces/constants';
+import { Entity, IEntity } from '../../interfaces/my-media-data.interfaces';
 import { FilmsService } from '../../services/films.service';
 import { SeriesService } from '../../services/series.service';
 import { AnimeService } from '../../services/anime.service';
 import { AudiobooksService } from '../../services/audiobooks.service';
 import { MangaService } from '../../services/manga.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ContentBaseClass } from '../../classes/content-base.class';
 
 @Component({
   selector: 'app-admin-panel-list',
   templateUrl: './admin-panel-list.component.html',
   styleUrls: ['./admin-panel-list.component.css'],
 })
-export class AdminPanelListComponent implements OnInit {
-  @ViewChild('content') content: any;
-
+export class AdminPanelListComponent
+  extends ContentBaseClass
+  implements OnInit
+{
   public tabNamesList = TAB_NAMES_LIST;
-  tab: EntityTypes = 'films';
-  filmArray: IFilm[] = [];
-  seriesArray: ISeries[] = [];
-  animeArray: IAnime[] = [];
-  mangaArray: IManga[] = [];
-  audiobookArray: IAudiobook[] = [];
-  showArray: IEntity[] = [];
   isMenuOpen = false;
   user: any;
   userIconState = false;
@@ -40,14 +27,23 @@ export class AdminPanelListComponent implements OnInit {
   editableEntity: Entity = new Entity();
 
   constructor(
-    private modalService: NgbModal,
-    private filmsService: FilmsService,
-    private seriesService: SeriesService,
-    private animeService: AnimeService,
-    private mangaService: MangaService,
-    private audiobooksService: AudiobooksService,
+    modalService: NgbModal,
+    filmsService: FilmsService,
+    seriesService: SeriesService,
+    animeService: AnimeService,
+    mangaService: MangaService,
+    audiobooksService: AudiobooksService,
     public auth: AngularFireAuth
-  ) {}
+  ) {
+    super(
+      modalService,
+      filmsService,
+      seriesService,
+      animeService,
+      mangaService,
+      audiobooksService
+    );
+  }
 
   ngOnInit(): void {
     this.auth.user.subscribe((user) => {
@@ -104,65 +100,6 @@ export class AdminPanelListComponent implements OnInit {
         this.audiobooksService.deleteValue(entity).then(() => {
           this.audiobookArray = this.showArray;
         });
-        break;
-    }
-  }
-
-  openXl() {
-    this.modalService.open(this.content, { size: 'xl' });
-  }
-
-  public changeTab(tab: EntityTypes): void {
-    this.tab = tab;
-    switch (this.tab) {
-      case 'films':
-        if (this.filmArray?.length) {
-          this.showArray = this.filmArray.map(
-            (el) => new Entity(el as IEntity)
-          );
-        } else {
-          this.getFilms();
-        }
-        break;
-
-      case 'series':
-        if (this.seriesArray?.length) {
-          this.showArray = this.seriesArray.map(
-            (el) => new Entity(el as IEntity)
-          );
-        } else {
-          this.getSerials();
-        }
-        break;
-
-      case 'anime':
-        if (this.animeArray?.length) {
-          this.showArray = this.animeArray.map(
-            (el) => new Entity(el as IEntity)
-          );
-        } else {
-          this.getAnime();
-        }
-        break;
-
-      case 'manga':
-        if (this.mangaArray?.length) {
-          this.showArray = this.mangaArray.map(
-            (el) => new Entity(el as IEntity)
-          );
-        } else {
-          this.getManga();
-        }
-        break;
-
-      case 'audiobooks':
-        if (this.audiobookArray?.length) {
-          this.showArray = this.audiobookArray.map(
-            (el) => new Entity(el as IEntity)
-          );
-        } else {
-          this.getAudiobooks();
-        }
         break;
     }
   }
@@ -260,42 +197,5 @@ export class AdminPanelListComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  private getSerials(): void {
-    this.seriesService.getValues().then((seriesList) => {
-      this.seriesArray = Array.from(seriesList);
-      this.showArray = this.seriesArray.map((el) => new Entity(el as IEntity));
-    });
-  }
-
-  private getFilms(): void {
-    this.filmsService.getValues().then((filmsList) => {
-      this.filmArray = Array.from(filmsList);
-      this.showArray = this.filmArray.map((el) => new Entity(el as IEntity));
-    });
-  }
-
-  private getAnime(): void {
-    this.animeService.getValues().then((animeList) => {
-      this.animeArray = Array.from(animeList);
-      this.showArray = this.animeArray.map((el) => new Entity(el as IEntity));
-    });
-  }
-
-  private getManga(): void {
-    this.mangaService.getValues().then((mangaList) => {
-      this.mangaArray = Array.from(mangaList);
-      this.showArray = this.mangaArray.map((el) => new Entity(el as IEntity));
-    });
-  }
-
-  private getAudiobooks(): void {
-    this.audiobooksService.getValues().then((audiobooksList) => {
-      this.audiobookArray = Array.from(audiobooksList);
-      this.showArray = this.audiobookArray.map(
-        (el) => new Entity(el as IEntity)
-      );
-    });
   }
 }

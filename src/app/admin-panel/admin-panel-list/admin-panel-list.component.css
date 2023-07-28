@@ -1,5 +1,6 @@
 .main {
-  margin: 20px 20px -10px 20px;
+  background-image: url("https://pibig.info/uploads/posts/2022-11/1669651309_1-pibig-info-p-temnii-fon-krasivo-1.jpg");
+  padding: 20px 20px 0 20px;
 }
 
 .user-icon {
@@ -19,6 +20,7 @@
   display: flex;
   align-items: center;
   margin-left: 70px;
+  margin-right: 20px;
 }
 
 .log-out-btn {

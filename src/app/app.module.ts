@@ -25,7 +25,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SandwichModule } from './sandwich/sandwich.module';
 import { AuthenticationComponent } from './auth/authentication/authentication.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomePreviewComponent } from './home-preview/home-preview.component';
+import {
+  SWIPER_CONFIG,
+  SwiperConfigInterface,
+  SwiperModule,
+} from 'ngx-swiper-wrapper';
 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto',
+};
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -39,6 +49,7 @@ import { FooterComponent } from './footer/footer.component';
     ScrollDirective,
     AuthenticationComponent,
     FooterComponent,
+    HomePreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +69,13 @@ import { FooterComponent } from './footer/footer.component';
     MatSidenavModule,
     MatToolbarModule,
     SandwichModule,
+    SwiperModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG,
+    },
+  ],
 })
 export class AppModule {}

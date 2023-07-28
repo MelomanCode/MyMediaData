@@ -1,0 +1,38 @@
+<div class="title">Top 6 Films for watch today</div>
+
+
+<swiper
+  *ngIf="topRatedFilms?.length"
+  class="swiper-container"
+  [config]="config"
+  (indexChange)="onIndexChange($event)"
+  (swiperTransitionStart)="onSwiperEvent('transitionStart')"
+  (swiperTransitionEnd)="onSwiperEvent('transitionEnd')"
+>
+  <div
+    *ngFor="let film of topRatedFilms; index as i"
+    class="swiper-slide"
+  >
+    <img
+      [src]="film.imageLink"
+      [alt]="film.imageLink"
+    />
+    <div class="slide-content">
+      <div class="slide-name">{{ film.name }}</div>
+      <div class="slide-setting">
+        <div class="content-view">
+          Дата выхода: <b style="color: #b95a5a">{{ film.release }}</b>
+        </div>
+        <div class="content-view">
+          Рейтинг на IMDb: <b style="color: #b95a5a">{{ film.IMDb }}</b>
+        </div>
+        <div class="content-view">
+          Мой комментарий: <b style="color: #1c8a41">{{ film.comments }}</b>
+        </div>
+        <div class="content-view">
+          Моя оценка: <b style="color: #b95a5a">{{ film.myTop }}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</swiper>

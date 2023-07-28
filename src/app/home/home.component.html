@@ -5,6 +5,9 @@
     (searchEmmit)="searchValue = $event"
   >
   </app-navbar-component>
+  <app-home-preview
+  *ngIf="tab === 'home'"
+  ></app-home-preview>
   <div style="overflow-x: auto">
     <div
       appScrollDirection
