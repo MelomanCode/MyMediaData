@@ -1,6 +1,5 @@
-<div class="title">Top 6 Films for watch today</div>
-
-
+<div class="film-container" *ngIf="false">
+<div class="title-films">Top 6 Films for watch today</div>
 <swiper
   *ngIf="topRatedFilms?.length"
   class="swiper-container"
@@ -36,3 +35,85 @@
     </div>
   </div>
 </swiper>
+</div>
+
+<div class="serial-container" *ngIf="false">
+  <div class="title-serials">Top 6 Serials for watch today</div>
+  <swiper
+    *ngIf="topRatedSerials?.length"
+    class="swiper-container"
+    [config]="config"
+    (indexChange)="onIndexChange($event)"
+    (swiperTransitionStart)="onSwiperEvent('transitionStart')"
+    (swiperTransitionEnd)="onSwiperEvent('transitionEnd')"
+  >
+    <div
+      *ngFor="let serial of topRatedSerials; index as i"
+      class="swiper-slide"
+    >
+      <img
+        [src]="serial.imageLink"
+        [alt]="serial.imageLink"
+      />
+      <div class="slide-content">
+        <div class="slide-name">{{ serial.name }}</div>
+        <div class="slide-setting">
+          <div class="content-view">
+            Дата выхода: <b style="color: #b95a5a">{{ serial.release }}</b>
+          </div>
+          <div class="content-view">
+            Рейтинг на IMDb: <b style="color: #b95a5a">{{ serial.IMDb }}</b>
+          </div>
+          <div class="content-view">
+            Мой комментарий: <b style="color: #1c8a41">{{ serial.comments }}</b>
+          </div>
+          <div class="content-view">
+            Моя оценка: <b style="color: #b95a5a">{{ serial.myTop }}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </swiper>
+</div>
+
+<div class="anime-container" *ngIf="false">
+  <div class="title-anime">Top 6 Anime for watch today</div>
+  <swiper
+    *ngIf="topRatedAnime?.length"
+    class="swiper-container"
+    [config]="config"
+    (indexChange)="onIndexChange($event)"
+    (swiperTransitionStart)="onSwiperEvent('transitionStart')"
+    (swiperTransitionEnd)="onSwiperEvent('transitionEnd')"
+  >
+    <div
+      *ngFor="let anime of topRatedAnime; index as i"
+      class="swiper-slide"
+    >
+      <img
+        [src]="anime.imageLink"
+        [alt]="anime.imageLink"
+      />
+      <div class="slide-content">
+        <div class="slide-name">{{ anime.name }}</div>
+        <div class="slide-setting">
+          <div class="content-view">
+            Дата выхода: <b style="color: #b95a5a">{{ anime.release }}</b>
+          </div>
+          <div class="content-view">
+            Кол-во сезонов: <b style="color: #b95a5a">{{ anime.seasons }}</b>
+          </div>
+          <div class="content-view">
+            Кол-во серий в (сезоне/всего): <b style="color: #b95a5a">{{ anime.episodesInSeason }}</b>
+          </div>
+          <div class="content-view">
+            Мой комментарий: <b style="color: #1c8a41">{{ anime.comments }}</b>
+          </div>
+          <div class="content-view">
+            Моя оценка: <b style="color: #b95a5a">{{ anime.myTop }}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </swiper>
+</div>

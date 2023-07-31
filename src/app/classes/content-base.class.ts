@@ -99,8 +99,11 @@ export class ContentBaseClass {
     this.seriesService.getValues().then((seriesList) => {
       this.seriesArray = Array.from(seriesList);
       this.showArray = this.seriesArray.map((el) => new Entity(el as IEntity));
+      this.getTopRatedSerials();
     });
   }
+
+  protected getTopRatedSerials(): void {}
 
   protected getFilms(): void {
     this.filmsService.getValues().then((filmsList) => {
@@ -116,8 +119,11 @@ export class ContentBaseClass {
     this.animeService.getValues().then((animeList) => {
       this.animeArray = Array.from(animeList);
       this.showArray = this.animeArray.map((el) => new Entity(el as IEntity));
+      this.getTopRatedAnime();
     });
   }
+
+  protected getTopRatedAnime(): void {}
 
   protected getManga(): void {
     this.mangaService.getValues().then((mangaList) => {
