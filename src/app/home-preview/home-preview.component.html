@@ -1,40 +1,37 @@
 <div class="film-container">
-<div class="title-films">Top 6 Films for watch today</div>
-<swiper
-  *ngIf="topRatedFilms?.length"
-  class="swiper-container"
-  [config]="config"
-  (indexChange)="onIndexChange($event)"
-  (swiperTransitionStart)="onSwiperEvent('transitionStart')"
-  (swiperTransitionEnd)="onSwiperEvent('transitionEnd')"
->
-  <div
-    *ngFor="let film of topRatedFilms; index as i"
-    class="swiper-slide"
+  <div class="title-films">Top 6 Films for watch today</div>
+  <swiper
+    *ngIf="topRatedFilms?.length"
+    class="swiper-container"
+    [config]="config"
   >
-    <img
-      [src]="film.imageLink"
-      [alt]="film.imageLink"
-    />
-    <div class="slide-content">
-      <div class="slide-name">{{ film.name }}</div>
-      <div class="slide-setting">
-        <div class="content-view">
-          Дата выхода: <b style="color: #b95a5a">{{ film.release }}</b>
-        </div>
-        <div class="content-view">
-          Рейтинг на IMDb: <b style="color: #b95a5a">{{ film.IMDb }}</b>
-        </div>
-        <div class="content-view">
-          Мой комментарий: <b style="color: #1c8a41">{{ film.comments }}</b>
-        </div>
-        <div class="content-view">
-          Моя оценка: <b style="color: #b95a5a">{{ film.myTop }}</b>
+    <div
+      *ngFor="let film of topRatedFilms; index as i"
+      class="swiper-slide"
+    >
+      <img
+        [src]="film.imageLink"
+        [alt]="film.imageLink"
+      />
+      <div class="slide-content">
+        <div class="slide-name">{{ film.name }}</div>
+        <div class="slide-setting">
+          <div class="content-view">
+            Дата выхода: <b style="color: #b95a5a">{{ film.release }}</b>
+          </div>
+          <div class="content-view">
+            Рейтинг на IMDb: <b style="color: #b95a5a">{{ film.IMDb }}</b>
+          </div>
+          <div class="content-view">
+            Мой комментарий: <b style="color: #1c8a41">{{ film.comments }}</b>
+          </div>
+          <div class="content-view">
+            Моя оценка: <b style="color: #b95a5a">{{ film.myTop }}</b>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</swiper>
+  </swiper>
 </div>
 
 <div class="serial-container">
@@ -43,9 +40,6 @@
     *ngIf="topRatedSerials?.length"
     class="swiper-container"
     [config]="config"
-    (indexChange)="onIndexChange($event)"
-    (swiperTransitionStart)="onSwiperEvent('transitionStart')"
-    (swiperTransitionEnd)="onSwiperEvent('transitionEnd')"
   >
     <div
       *ngFor="let serial of topRatedSerials; index as i"
@@ -65,6 +59,13 @@
             Рейтинг на IMDb: <b style="color: #b95a5a">{{ serial.IMDb }}</b>
           </div>
           <div class="content-view">
+            Кол-во сезонов: <b style="color: #b95a5a">{{ serial.seasons }}</b>
+          </div>
+          <div class="content-view">
+            Кол-во серий в (сезоне/всего):
+            <b style="color: #b95a5a">{{ serial.episodesInSeason }}</b>
+          </div>
+          <div class="content-view">
             Мой комментарий: <b style="color: #1c8a41">{{ serial.comments }}</b>
           </div>
           <div class="content-view">
@@ -82,9 +83,6 @@
     *ngIf="topRatedAnime?.length"
     class="swiper-container"
     [config]="config"
-    (indexChange)="onIndexChange($event)"
-    (swiperTransitionStart)="onSwiperEvent('transitionStart')"
-    (swiperTransitionEnd)="onSwiperEvent('transitionEnd')"
   >
     <div
       *ngFor="let anime of topRatedAnime; index as i"
@@ -104,7 +102,8 @@
             Кол-во сезонов: <b style="color: #b95a5a">{{ anime.seasons }}</b>
           </div>
           <div class="content-view">
-            Кол-во серий в (сезоне/всего): <b style="color: #b95a5a">{{ anime.episodesInSeason }}</b>
+            Кол-во серий в (сезоне/всего):
+            <b style="color: #b95a5a">{{ anime.episodesInSeason }}</b>
           </div>
           <div class="content-view">
             Мой комментарий: <b style="color: #1c8a41">{{ anime.comments }}</b>
@@ -116,4 +115,7 @@
       </div>
     </div>
   </swiper>
+</div>
+<div class="clock">
+  <app-clock></app-clock>
 </div>

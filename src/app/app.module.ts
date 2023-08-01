@@ -31,6 +31,7 @@ import {
   SwiperConfigInterface,
   SwiperModule,
 } from 'ngx-swiper-wrapper';
+import { ClockComponent } from './clock/clock.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -50,6 +51,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AuthenticationComponent,
     FooterComponent,
     HomePreviewComponent,
+    ClockComponent,
   ],
   imports: [
     BrowserModule,

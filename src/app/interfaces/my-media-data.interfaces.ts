@@ -9,6 +9,15 @@ export interface IHeroProf {
   comments: string;
 }
 
+export interface ICount {
+  id: string;
+  filmsCount: number;
+  serialsCount: number;
+  animeCount: number;
+  mangaCount: number;
+  audiobooksCount: number;
+}
+
 export interface IEntityBase {
   id: string;
   name: string;

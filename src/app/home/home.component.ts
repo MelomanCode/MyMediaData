@@ -1,12 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Entity, IEntity } from 'src/app/interfaces/my-media-data.interfaces';
+import {
+  Entity,
+  IAnime,
+  ICount,
+  IEntity,
+  IFilm,
+  ISeries,
+} from 'src/app/interfaces/my-media-data.interfaces';
 import { FilmsService } from 'src/app/services/films.service';
 import { SeriesService } from 'src/app/services/series.service';
 import { AnimeService } from 'src/app/services/anime.service';
 import { AudiobooksService } from 'src/app/services/audiobooks.service';
 import { MangaService } from 'src/app/services/manga.service';
 import { ContentBaseClass } from '../classes/content-base.class';
+import { CountEntityService } from '../services/count-entity.service';
+import { EntityTypes } from '../interfaces/constants';
+import {
+  getLocalStorage,
+  getRandomEntities,
+  setLocalStorage,
+} from '../general.functions';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +33,18 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
   scrollDirection: 'up' | 'down' = 'up';
   nameSortTrigger: 'a-z' | 'z-a' | 'null' = 'null';
   myTopSortTrigger: 'a-z' | 'z-a' | 'null' = 'null';
+  countEntity: ICount = {
+    id: '',
+    filmsCount: 0,
+    serialsCount: 0,
+    animeCount: 0,
+    mangaCount: 0,
+    audiobooksCount: 0,
+  };
+
+  topRatedFilms: IFilm[] = [];
+  topRatedSerials: ISeries[] = [];
+  topRatedAnime: IAnime[] = [];
 
   constructor(
     modalService: NgbModal,
@@ -26,7 +52,8 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
     seriesService: SeriesService,
     animeService: AnimeService,
     mangaService: MangaService,
-    audiobooksService: AudiobooksService
+    audiobooksService: AudiobooksService,
+    private countEntityService: CountEntityService
   ) {
     super(
       modalService,
@@ -38,7 +65,9 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCountEntity();
+  }
 
   about(entity: IEntity) {
     this.editableEntity = entity;
@@ -87,5 +116,135 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
 
   onScrollDirection(direction: string) {
     this.scrollDirection = direction as 'up' | 'down';
+  }
+
+  getCountEntity() {
+    this.countEntityService.getValues().then((value) => {
+      if (value?.[0]) {
+        this.countEntity = Object.assign({}, value[0]);
+      } else {
+        this.creatCountEntity();
+      }
+      this.getEntity('films');
+      this.getEntity('series');
+      this.getEntity('anime');
+      this.getEntity('manga');
+      this.getEntity('audiobooks');
+    });
+  }
+
+  creatCountEntity() {
+    this.countEntityService.createValue(this.countEntity).then((id) => {
+      if (id) {
+        this.countEntity.id = id;
+      }
+    });
+  }
+
+  override updateCountEntity(
+    entityName:
+      | 'filmsCount'
+      | 'serialsCount'
+      | 'animeCount'
+      | 'mangaCount'
+      | 'audiobooksCount',
+    count: number
+  ) {
+    if (+this.countEntity[entityName] === +count) {
+      return;
+    }
+    this.countEntity[entityName] = count;
+    this.countEntityService.updateValue(this.countEntity).then();
+  }
+
+  getEntity(entityName: EntityTypes): void {
+    switch (entityName) {
+      case 'films': {
+        const entityList = getLocalStorage(entityName);
+        if (entityList?.length) {
+          if (+this.countEntity.filmsCount === +entityList.length) {
+            this.filmArray = Array.from(entityList);
+            this.showArray = this.filmArray.map(
+              (el) => new Entity(el as IEntity)
+            );
+          } else {
+            this.getFilms();
+          }
+        } else {
+          this.getFilms();
+        }
+        this.topRatedFilms = getRandomEntities(this.filmArray as IEntity[], 6);
+        break;
+      }
+      case 'series': {
+        const entityList = getLocalStorage(entityName);
+        if (entityList?.length) {
+          if (+this.countEntity.serialsCount === +entityList.length) {
+            this.seriesArray = Array.from(entityList);
+            this.showArray = this.seriesArray.map(
+              (el) => new Entity(el as IEntity)
+            );
+          } else {
+            this.getSerials();
+          }
+        } else {
+          this.getSerials();
+        }
+        this.topRatedSerials = getRandomEntities(
+          this.seriesArray as IEntity[],
+          6
+        );
+        break;
+      }
+      case 'anime': {
+        const entityList = getLocalStorage(entityName);
+        if (entityList?.length) {
+          if (+this.countEntity.animeCount === +entityList.length) {
+            this.animeArray = Array.from(entityList);
+            this.showArray = this.animeArray.map(
+              (el) => new Entity(el as IEntity)
+            );
+          } else {
+            this.getAnime();
+          }
+        } else {
+          this.getAnime();
+        }
+        this.topRatedAnime = getRandomEntities(this.animeArray as IEntity[], 6);
+        break;
+      }
+      case 'manga': {
+        const entityList = getLocalStorage(entityName);
+        if (entityList?.length) {
+          if (+this.countEntity.mangaCount === +entityList.length) {
+            this.mangaArray = Array.from(entityList);
+            this.showArray = this.mangaArray.map(
+              (el) => new Entity(el as IEntity)
+            );
+          } else {
+            this.getManga();
+          }
+        } else {
+          this.getManga();
+        }
+        break;
+      }
+      case 'audiobooks': {
+        const entityList = getLocalStorage(entityName);
+        if (entityList?.length) {
+          if (+this.countEntity.audiobooksCount === +entityList.length) {
+            this.audiobookArray = Array.from(entityList);
+            this.showArray = this.audiobookArray.map(
+              (el) => new Entity(el as IEntity)
+            );
+          } else {
+            this.getAudiobooks();
+          }
+        } else {
+          this.getAudiobooks();
+        }
+        break;
+      }
+    }
   }
 }

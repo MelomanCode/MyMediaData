@@ -6,7 +6,10 @@
   >
   </app-navbar-component>
   <app-home-preview
-  *ngIf="tab === 'home'"
+    *ngIf="tab === 'home'"
+    [topRatedFilms]="topRatedFilms"
+    [topRatedSerials]="topRatedSerials"
+    [topRatedAnime]="topRatedAnime"
   ></app-home-preview>
   <div style="overflow-x: auto">
     <div

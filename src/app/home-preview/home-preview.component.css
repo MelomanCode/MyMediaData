@@ -1,84 +1,80 @@
 .swiper-container {
-  width: 700px;
-  height: 300px;
+  width: 80%;
+  height: 500px;
   display: flex;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 1), 0 0 15px 15px rgb(0, 0, 0);
 }
 
 .film-container {
   background-image: url('https://images.hdqwalls.com/wallpapers/marvel-vs-dc-1u.jpg');
-  height: 500px;
-  width: 100%;
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding-bottom: 40px;
 }
 
 .title-films {
   display: flex;
-  height: 70px;
+  height: 200px;
   justify-content: center;
   align-items: center;
   font-size: 50px;
   font-family: 'Comic Sans MS';
-  background: rgba(12, 12, 12, 0.9);
+  background: rgba(12, 12, 12, .98);
   color: white;
   margin: 0 0 40px 0;
+  box-shadow: 0 0 8px 8px rgba(255, 255, 255, 1), 0 0 8px 8px rgb(0, 0, 0);
   text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85,
     -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606,
     0 -80px 70px #973716, 10px -90px 80px #451b0e;
 }
 
 .serial-container {
-  background-image: url('https://sc2tv.ru/images/longread/7134dbeb37c17bb36ed1ae7a45bca1c7/85403a7b-4c4b-4a17-9a85-a4c2f6c83426.jpg');
-  height: 500px;
-  width: 100%;
-  background-repeat: no-repeat;
+  background-image: url('https://v1.popcornnews.ru/k2/news/1200/upload/news/556359488792.jpg');
   background-size: cover;
   background-position: center;
-  margin-top: 30px;
+  padding-bottom: 40px;
 }
 
 .title-serials {
   display: flex;
-  height: 70px;
+  height: 200px;
   justify-content: center;
   align-items: center;
   font-size: 50px;
   font-family: 'Comic Sans MS';
-  background: rgba(12, 12, 12, 0.9);
+  background: rgba(12, 12, 12, .98);
   color: white;
   margin: 0 0 40px 0;
+  box-shadow: 0 0 8px 8px rgba(255, 255, 255, 1), 0 0 8px 8px rgb(0, 0, 0);
   text-shadow: 0 0 4px #fff, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
     -2px -15px 11px #f80, 2px -25px 18px #f20;
 }
 
 .anime-container {
   background-image: url('https://pictures.ua.tribuna.com/image/5adc5b19-8a74-497f-85e0-0e233e1e66c5');
-  height: 500px;
-  width: 100%;
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin-top: 30px;
+  padding-bottom: 40px;
 }
 
 .title-anime {
   display: flex;
-  height: 70px;
+  height: 200px;
   justify-content: center;
   align-items: center;
   font-size: 50px;
   font-family: 'Comic Sans MS';
-  background: rgba(12, 12, 12, 0.9);
+  background: rgba(12, 12, 12, .98);
   color: white;
   margin: 0 0 40px 0;
+  box-shadow: 0 0 8px 8px rgb(229, 195, 214), 0 0 8px 8px rgb(0, 0, 0);
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95,
     0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
   letter-spacing: 5px;
 }
 
 .swiper-slide {
-  background-color: rgba(12, 2, 2, 0.94);
+  background-color: rgba(0, 0, 0);
   flex-direction: row;
   display: flex;
   color: #fde1e1;
@@ -104,11 +100,20 @@
   justify-content: flex-start;
   padding-left: 20px;
   font-family: 'Comic Sans MS';
+  height: 400px;
 }
 
 .content-view {
   padding-top: 15px;
   font-family: 'Comic Sans MS';
+}
+
+.clock {
+  background: #0f3854;
+  background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%) !important;
+  background-size: 100%;
+  padding-top: 30px;
+  height: 200px;
 }
 
 @media (max-width: 768px) {
@@ -122,10 +127,19 @@
     font-size: 15px;
   }
   .swiper-container {
-    width: 390px;
+    width: 100%;
+    box-shadow: none;
+    height: auto;
+  }
+
+  .swiper-container img {
+    height: 200px;
   }
   .slide-content {
     width: 350px;
+  }
+  .slide-setting {
+    height: auto;
   }
   .film-container {
     background-image: none;
