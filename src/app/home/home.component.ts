@@ -173,7 +173,10 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
         } else {
           this.getFilms();
         }
-        this.topRatedFilms = getRandomEntities(this.filmArray as IEntity[], 6);
+        const filteredValues = this.filmArray.filter(
+          (values) => values.myTop >= 9 && values.myTop <= 10
+        );
+        this.topRatedFilms = getRandomEntities(filteredValues as IEntity[], 6);
         break;
       }
       case 'series': {
@@ -190,8 +193,11 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
         } else {
           this.getSerials();
         }
+        const filteredValues = this.seriesArray.filter(
+          (values) => values.myTop >= 9 && values.myTop <= 10
+        );
         this.topRatedSerials = getRandomEntities(
-          this.seriesArray as IEntity[],
+          filteredValues as IEntity[],
           6
         );
         break;
@@ -210,7 +216,10 @@ export class HomeComponent extends ContentBaseClass implements OnInit {
         } else {
           this.getAnime();
         }
-        this.topRatedAnime = getRandomEntities(this.animeArray as IEntity[], 6);
+        const filteredValues = this.animeArray.filter(
+          (values) => values.myTop >= 9 && values.myTop <= 10
+        );
+        this.topRatedAnime = getRandomEntities(filteredValues as IEntity[], 6);
         break;
       }
       case 'manga': {

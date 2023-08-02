@@ -74,7 +74,7 @@
 }
 
 .swiper-slide {
-  background-color: rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0, .95);
   flex-direction: row;
   display: flex;
   color: #fde1e1;
@@ -92,8 +92,10 @@
   display: flex;
   width: 100%;
   justify-content: flex-start;
+  padding-top: 7px;
+  line-height: 40px;
   font-family: 'Comic Sans MS';
-  font-size: 20px;
+  font-size: 35px;
 }
 
 .slide-setting {
@@ -104,7 +106,8 @@
 }
 
 .content-view {
-  padding-top: 15px;
+  padding-top: 20px;
+  font-size: 20px;
   font-family: 'Comic Sans MS';
 }
 
@@ -130,6 +133,16 @@
     width: 100%;
     box-shadow: none;
     height: auto;
+  }
+
+  .slide-name {
+    line-height: 25px;
+    font-size: 20px;
+  }
+
+  .content-view {
+    padding-top: 10px;
+    font-size: 15px;
   }
 
   .swiper-container img {
