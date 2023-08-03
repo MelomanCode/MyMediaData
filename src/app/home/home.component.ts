@@ -16,11 +16,7 @@ import { MangaService } from 'src/app/services/manga.service';
 import { ContentBaseClass } from '../classes/content-base.class';
 import { CountEntityService } from '../services/count-entity.service';
 import { EntityTypes } from '../interfaces/constants';
-import {
-  getLocalStorage,
-  getRandomEntities,
-  setLocalStorage,
-} from '../general.functions';
+import { getLocalStorage, getRandomEntities } from '../general.functions';
 
 @Component({
   selector: 'app-home',
